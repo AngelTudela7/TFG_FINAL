@@ -75,7 +75,18 @@ include('includes/database.php');
 
 <select name="select-jugador" id="select-jugador">
 </select>
+<div id="contenedor-boton">
+    
 </div>
+</div>
+
+<div id="contenedor-datos">
+
+
+
+</div>
+
+
 
   <footer class="footer">
     <p>&copy; 2024 Fortune Football. Todos los derechos reservados.</p>

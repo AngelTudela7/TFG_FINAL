@@ -264,16 +264,27 @@
     }
 }
 
+select {
+    max-height: 200px; /* Ajusta el tamaño máximo del desplegable */
+    overflow-y: auto; /* Activa el scroll si hay demasiadas opciones */
+}
 
+select option {
+  position: absolute;
+  bottom: -100%;
+  transform: translateY(5px);
+
+}
 
 #selectores {
   display: flex;
   flex-direction: column; /* Mantiene el título arriba y el select debajo */
   align-items: flex-start; /* Alinea a la izquierda */
   justify-content: flex-start; /* Mantiene el contenido en la parte superior */
-  height: 100vh; /* Ocupar toda la altura */
-  margin-top: -50px; /* Ajusta para moverlo arriba o abajo */
+  margin-top: -100px; /* Ajusta para moverlo arriba o abajo */
   margin-left: 110px; /* Aumenta este valor para moverlo más a la izquierda */
+  overflow: visible !important;
+  min-height: 500px; /* O más, dependiendo del diseño */
 }
 
 
@@ -293,6 +304,7 @@
 #titulo2{
   margin-top: 20px; /* Ajusta para moverlo arriba o abajo */
  text-align: center;
+ margin-bottom: 20px;
  margin-right:70%; /* Aumenta este valor para moverlo más a la izquierda */
   
 }
@@ -300,7 +312,150 @@
 
 #titulo3{
   margin-top: 20px;
+  margin-bottom: 20px;
  text-align: center;
  margin-right:70%; /* Aumenta este valor para moverlo más a la izquierda */
   
+}
+
+#select-jugador {
+ 
+  direction: ltr;
+  min-height: 40px;
+    height: auto;
+}
+
+
+/* Estilos generales para los select */
+select {
+  width: 100%;
+  max-width: 300px; /* Ajusta el ancho máximo */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ffbc00; /* Borde con el color predominante */
+  border-radius: 5px;
+  background-color: #1f1f1f; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  appearance: none; /* Elimina el estilo por defecto del navegador */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Cuando el select está enfocado */
+select:focus {
+  outline: none;
+  border-color: #ffa500; /* Color un poco más fuerte al enfocar */
+  box-shadow: 0 0 8px rgba(255, 188, 0, 0.8);
+}
+
+/* Opciones dentro del select */
+select option {
+  background-color: #1f1f1f; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+}
+
+/* Estilos para los títulos */
+h2 {
+  font-size: 18px;
+  color: #ffbc00;
+  
+  text-align: center;
+}
+
+/* Centrar los selects */
+#select-competicion,
+#select-equipo,
+#select-jugador {
+  display: block;
+  
+}
+
+/* Efecto hover */
+select:hover {
+  background-color: #292929;
+}
+
+
+/* 🔸 Estilo del título */
+.titulo-datos {
+  color: #FFA500; /* Naranja vibrante */
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* 🔸 Estilo de la tabla */
+.tabla-datos {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #111; /* Fondo oscuro */
+  color: #FFF; /* Texto blanco */
+  border: 2px solid #FFA500;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabla-datos th, .tabla-datos td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #FFA500;
+  
+}
+
+.tabla-datos th {
+  background-color: #222; /* Gris oscuro */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tabla-datos tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-datos td {
+  background-color: #000; /* Negro */
+  color: white;
+}
+
+/* Contenedor para centrar el botón */
+#contenedor-boton {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: 95%;
+  margin-top: 20px;
+}
+
+/* 🔹 Estilo del botón */
+#boton-mostrar {
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #FF8C00, #FFA500); /* Degradado naranja */
+  color: #000; /* Texto oscuro para contraste */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(255, 165, 0, 0.5);
+  min-width: 200px; /* Mantiene un tamaño uniforme */
+}
+
+/* 🔹 Efecto hover */
+#boton-mostrar:hover {
+  background: linear-gradient(90deg, #FFA500, #FF8C00);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(255, 165, 0, 0.7);
+}
+
+/* 🔹 Efecto clic */
+#boton-mostrar:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 5px rgba(255, 165, 0, 0.5);
 }
