@@ -73,5 +73,12 @@ async function recuperar_jugadores(id_equipo) {
 
 
 
+
+
+
+
+
+
+
 // Cargar las competiciones al iniciar
 cargar_competiciones();

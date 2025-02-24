@@ -1,0 +1,461 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Tourney", sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    background-color: #1f1f1f;
+    padding:0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    
+  }
+  
+  
+  .navbar .logo {
+    font-size: 24px;
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 0; /* Elimina cualquier margen adicional del logo */
+    margin-bottom: 0; /* Elimina cualquier margen inferior */
+  }
+  
+  .navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar nav ul li a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar nav ul li a:hover {
+    color: #ffbc00;
+  }
+  
+  
+  /* Ajustar el espaciado y la altura de los enlaces */
+  .navbar nav ul li {
+    display: flex;
+    align-items: center; /* Centra los enlaces verticalmente */
+  }
+  
+  .navbar nav ul li a {
+    padding: 5px 0; /* Reduce el espacio vertical de cada enlace */
+  }
+  
+  .hamburger-menu {
+    display: none; /* Visible solo en pantallas pequeñas */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 11; /* Asegura que esté encima del resto */
+    position: fixed; /* Anclado */
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    right: 20px; /* Ajusta la distancia desde el borde derecho */
+  }
+  
+  /* Opcional: para que el menú hamburguesa sea más visible */
+  .hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Menú desplegable */
+  #mobile-menu {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #1f1f1f;
+    width: 60%; /* Ajusta el ancho al 60% de la pantalla */
+    height: 100%; /* Ocupa el 100% de la altura */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    padding: 20px;
+    overflow-y: auto; /* Permite desplazarse si las opciones son muchas */
+  }
+  
+  /* Ajustar el espacio entre las opciones */
+  #mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio reducido entre las opciones */
+    height: 100%;
+    overflow-y: auto; /* Permite el desplazamiento si es necesario */
+  }
+  
+  /* Enlaces del menú */
+  #mobile-menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  
+  #mobile-menu ul li a:hover {
+    color: #ffbc00;
+  }
+  
+  /* ===== Mostrar el menú al hacer click ===== */
+  #mobile-menu.active {
+    display: flex; /* Mostrar el menú cuando está activo */
+    flex-direction: column;
+  }
+  
+  /* Animaciones del menú hamburguesa */
+  .hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger-menu.active span:nth-child(2) {
+    opacity: 0; /* Ocultar la barra central */
+  }
+  
+  .hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  
+  /* Barra de navegación (estilo normal) */
+  .navbar {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    padding-top: 1%; /* Ajusta el espacio superior para que el contenido no se solape con el header */
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .logo {
+    font-size: 24px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar nav ul li a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar nav ul li a:hover {
+    color: #ffbc00;
+  }
+
+
+
+  
+  /* Footer */
+  .footer {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+    font-size: 14px;
+  }
+  
+
+  @media (max-width: 768px) {
+    /* Ajustar barra de navegación */
+    .navbar-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar nav ul {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .navbar .logo {
+      font-size: 20px;
+    }
+
+    .footer {
+        font-size: 12px; /* Ajusta el tamaño del texto del footer */
+        padding: 8px;
+      }
+    }
+
+
+    /* Pantallas extra pequeñas (máximo 480px) */
+@media (max-width: 480px) {
+    /* Ajustar barra de navegación aún más */
+    .navbar nav ul {
+      gap: 5px;
+    }
+    .navbar .logo {
+      font-size: 18px;
+    }
+}
+
+
+/* Estilos para pantallas pequeñas (menor a 768px) */
+@media (max-width: 768px) {
+    .navbar-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar nav ul {
+      display: none; /* Ocultar el menú de navegación normal */
+    }
+  
+    .hamburger-menu {
+      display: flex; /* Mostrar el icono del menú hamburguesa */
+    }
+  
+    .content {
+      padding: 20px;
+    }
+  
+    /* Mostrar el menú hamburguesa al hacer click */
+    #mobile-menu {
+      display: none;
+    }
+}
+
+select {
+    max-height: 200px; /* Ajusta el tamaño máximo del desplegable */
+    overflow-y: auto; /* Activa el scroll si hay demasiadas opciones */
+}
+
+select option {
+  position: absolute;
+  bottom: -100%;
+  transform: translateY(5px);
+
+}
+
+#selectores {
+  display: flex;
+  flex-direction: column; /* Mantiene el título arriba y el select debajo */
+  align-items: flex-start; /* Alinea a la izquierda */
+  justify-content: flex-start; /* Mantiene el contenido en la parte superior */
+  margin-top: -100px; /* Ajusta para moverlo arriba o abajo */
+  margin-left: 110px; /* Aumenta este valor para moverlo más a la izquierda */
+  overflow: visible !important;
+  min-height: 500px; /* O más, dependiendo del diseño */
+}
+
+
+#titulo_inicial{
+  margin-top: 100px; /* Ajusta para moverlo arriba o abajo */
+  text-align: center;
+  
+}
+
+#titulo1{
+  margin-top: 100px; /* Ajusta para moverlo arriba o abajo */
+ text-align: center;
+ margin-right:70%; /* Aumenta este valor para moverlo más a la izquierda */
+  
+}
+
+#titulo2{
+  margin-top: 20px; /* Ajusta para moverlo arriba o abajo */
+ text-align: center;
+ margin-bottom: 20px;
+ margin-right:70%; /* Aumenta este valor para moverlo más a la izquierda */
+  
+}
+
+
+#titulo3{
+  margin-top: 20px;
+  margin-bottom: 20px;
+ text-align: center;
+ margin-right:70%; /* Aumenta este valor para moverlo más a la izquierda */
+  
+}
+
+#select-jugador {
+ 
+  direction: ltr;
+  min-height: 40px;
+    height: auto;
+}
+
+
+/* Estilos generales para los select */
+select {
+  width: 100%;
+  max-width: 300px; /* Ajusta el ancho máximo */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ffbc00; /* Borde con el color predominante */
+  border-radius: 5px;
+  background-color: #1f1f1f; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  appearance: none; /* Elimina el estilo por defecto del navegador */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Cuando el select está enfocado */
+select:focus {
+  outline: none;
+  border-color: #ffa500; /* Color un poco más fuerte al enfocar */
+  box-shadow: 0 0 8px rgba(255, 188, 0, 0.8);
+}
+
+/* Opciones dentro del select */
+select option {
+  background-color: #1f1f1f; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+}
+
+/* Estilos para los títulos */
+h2 {
+  font-size: 18px;
+  color: #ffbc00;
+  
+  text-align: center;
+}
+
+/* Centrar los selects */
+#select-competicion,
+#select-equipo,
+#select-jugador {
+  display: block;
+  
+}
+
+/* Efecto hover */
+select:hover {
+  background-color: #292929;
+}
+
+
+/* 🔸 Estilo del título */
+.titulo-datos {
+  color: #FFA500; /* Naranja vibrante */
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* 🔸 Estilo de la tabla */
+.tabla-datos {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #111; /* Fondo oscuro */
+  color: #FFF; /* Texto blanco */
+  border: 2px solid #FFA500;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabla-datos th, .tabla-datos td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #FFA500;
+  
+}
+
+.tabla-datos th {
+  background-color: #222; /* Gris oscuro */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tabla-datos tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-datos td {
+  background-color: #000; /* Negro */
+  color: white;
+}
+
+/* Contenedor para centrar el botón */
+#contenedor-boton {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: 95%;
+  margin-top: 20px;
+}
+
+/* 🔹 Estilo del botón */
+#boton-mostrar {
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #FF8C00, #FFA500); /* Degradado naranja */
+  color: #000; /* Texto oscuro para contraste */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(255, 165, 0, 0.5);
+  min-width: 200px; /* Mantiene un tamaño uniforme */
+}
+
+/* 🔹 Efecto hover */
+#boton-mostrar:hover {
+  background: linear-gradient(90deg, #FFA500, #FF8C00);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(255, 165, 0, 0.7);
+}
+
+/* 🔹 Efecto clic */
+#boton-mostrar:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 5px rgba(255, 165, 0, 0.5);
+}
