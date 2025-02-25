@@ -1,3 +1,13 @@
+// Lógica para el menú hamburguesa
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+
+hamburgerMenu.addEventListener('click', () => {
+   hamburgerMenu.classList.toggle('active');
+   mobileMenu.classList.toggle('active');
+});
+
+
 async function cargar_competiciones() {
     const selectCompeticiones = document.getElementById("select-competicion");
 
@@ -14,7 +24,7 @@ async function cargar_competiciones() {
     });
 
     selectCompeticiones.addEventListener("change", function() {
-        var id_competicion = selectCompeticiones.value;
+        let id_competicion = selectCompeticiones.value;
         console.log("ID de la competición seleccionada:", id_competicion);
         cargar_equipos(id_competicion);
     });
@@ -24,8 +34,7 @@ async function cargar_competiciones() {
 async function cargar_equipos(id_competicion) {
     const selectEquipos = document.getElementById("select-equipo");
 
-    // Limpiar el select antes de agregar nuevas opciones
-    selectEquipos.innerHTML = "<option value='' disabled selected >Selecciona un equipo</option>";
+    selectEquipos.innerHTML = "<option value='' disabled selected>Selecciona un equipo</option>";
 
     let response = await fetch(`https://api.football-data.org/v4/competitions/${id_competicion}/teams`, {
         method: "GET",
@@ -36,16 +45,16 @@ async function cargar_equipos(id_competicion) {
 
     data.teams.forEach(equipo => {
         selectEquipos.innerHTML += `<option value="${equipo.id}">${equipo.name}</option>`;
-        
     });
 
     selectEquipos.addEventListener("change", function() {
-        var id_equipo = selectEquipos.value;
+        let id_equipo = selectEquipos.value;
         console.log("ID del equipo seleccionado:", id_equipo);
         recuperar_jugadores(id_equipo);
+        ultimos_5_partidos(id_competicion, id_equipo);
     });
-
 }
+
 
 async function recuperar_jugadores(id_equipo) {
     const selectJugadores = document.getElementById("select-jugador");
