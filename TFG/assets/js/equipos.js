@@ -47,13 +47,12 @@ async function cargar_equipos(id_competicion) {
         selectEquipos.innerHTML += `<option value="${equipo.id}">${equipo.name}</option>`;
     });
 
-    // Limpiar y agregar nuevo event listener
     selectEquipos.onchange = async function () {
         let id_equipo = selectEquipos.value;
         console.log("ID del equipo seleccionado:", id_equipo);
 
-        let jugadores = await recuperar_jugadores(id_equipo);  // 🔹 Obtener plantilla de jugadores
-        mostrar_plantilla(jugadores);  // 🔹 Mostrar en tabla
+        let jugadores = await recuperar_jugadores(id_equipo); 
+        mostrar_plantilla(jugadores);  
 
         ultimos_5_partidos(id_competicion, id_equipo);
         proximos_partidos_equipo(id_equipo);
@@ -89,7 +88,7 @@ async function recuperar_jugadores(id_equipo) {
 function mostrar_plantilla(jugadores) {
     let contenedor_plantilla = document.getElementById('contenedor-plantilla');
 
-    // Limpiar contenido anterior
+  
     contenedor_plantilla.innerHTML = "";
 
     if (jugadores.length === 0) {
@@ -97,15 +96,15 @@ function mostrar_plantilla(jugadores) {
         return;
     }
 
-    // Crear el contenedor general
+   
     let plantillaHTML = `<div style="width: fit-content; margin-left: 50px;">`;
 
-    // Agregar título "Plantilla"
+   
     plantillaHTML += `<h1 id="titulo-plantilla" style="color: #FFA500; font-size: 22px; font-weight: bold; margin-bottom: 15px; text-align: left;">
                         Plantilla
                       </h1>`;
 
-    // Contenedor de la tabla con scroll
+
     plantillaHTML += `
         <div style="max-height: 550px; overflow-y: auto; border: 2px solid #FFA500; border-radius: 8px;">
             <table id="tabla-plantilla">
@@ -125,7 +124,7 @@ function mostrar_plantilla(jugadores) {
 
     plantillaHTML += `</table></div></div>`;
 
-    // Insertar en el contenedor
+
     contenedor_plantilla.innerHTML = plantillaHTML;
 }
 
@@ -168,7 +167,7 @@ async function ultimos_5_partidos(id_competicion, id_equipo) {
 
 async function proximos_partidos_equipo(id_equipo) {
     let contenedor = document.getElementById('contenedor-proximos-partidos');
-    contenedor.innerHTML = ""; // Limpia antes de añadir nuevos partidos
+    contenedor.innerHTML = ""; 
 
     try {
         let response = await fetch(`https://api.football-data.org/v4/teams/${id_equipo}/matches?status=SCHEDULED&limit=10`, {

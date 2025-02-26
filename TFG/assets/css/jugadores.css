@@ -1,267 +1,263 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Tourney", sans-serif;
-    background-color: #121212;
-    color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .navbar {
-    background-color: #1f1f1f;
-    padding:0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-  }
-  
-  
-  .navbar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    
-  }
-  
-  
-  .navbar .logo {
-    font-size: 24px;
-    color: #ffffff;
-    text-decoration: none;
-    margin-top: 0; /* Elimina cualquier margen adicional del logo */
-    margin-bottom: 0; /* Elimina cualquier margen inferior */
-  }
-  
-  .navbar nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar nav ul li a {
-    text-decoration: none;
-    color: #bbb;
-    font-size: 16px;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar nav ul li a:hover {
-    color: #ffbc00;
-  }
-  
-  
-  /* Ajustar el espaciado y la altura de los enlaces */
-  .navbar nav ul li {
-    display: flex;
-    align-items: center; /* Centra los enlaces verticalmente */
-  }
-  
-  .navbar nav ul li a {
-    padding: 5px 0; /* Reduce el espacio vertical de cada enlace */
-  }
-  
-  .hamburger-menu {
-    display: none; /* Visible solo en pantallas pequeñas */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 11; /* Asegura que esté encima del resto */
-    position: fixed; /* Anclado */
-    top: 20px; /* Ajusta la distancia desde la parte superior */
-    right: 20px; /* Ajusta la distancia desde el borde derecho */
-  }
-  
-  /* Opcional: para que el menú hamburguesa sea más visible */
-  .hamburger-menu span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
-  
-  /* Menú desplegable */
-  #mobile-menu {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #1f1f1f;
-    width: 60%; /* Ajusta el ancho al 60% de la pantalla */
-    height: 100%; /* Ocupa el 100% de la altura */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    padding: 20px;
-    overflow-y: auto; /* Permite desplazarse si las opciones son muchas */
-  }
-  
-  /* Ajustar el espacio entre las opciones */
-  #mobile-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Espacio reducido entre las opciones */
-    height: 100%;
-    overflow-y: auto; /* Permite el desplazamiento si es necesario */
-  }
-  
-  /* Enlaces del menú */
-  #mobile-menu ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    transition: color 0.3s ease;
-  }
-  
-  #mobile-menu ul li a:hover {
-    color: #ffbc00;
-  }
-  
-  /* ===== Mostrar el menú al hacer click ===== */
-  #mobile-menu.active {
-    display: flex; /* Mostrar el menú cuando está activo */
-    flex-direction: column;
-  }
-  
-  /* Animaciones del menú hamburguesa */
-  .hamburger-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  
-  .hamburger-menu.active span:nth-child(2) {
-    opacity: 0; /* Ocultar la barra central */
-  }
-  
-  .hamburger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-  
-  
-  /* Barra de navegación (estilo normal) */
-  .navbar {
-    background-color: #1f1f1f;
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-    padding-top: 1%; /* Ajusta el espacio superior para que el contenido no se solape con el header */
-  }
-  
-  .navbar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar .logo {
-    font-size: 24px;
-    color: #ffffff;
-    text-decoration: none;
-  }
-  
-  .navbar nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar nav ul li a {
-    text-decoration: none;
-    color: #bbb;
-    font-size: 16px;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar nav ul li a:hover {
-    color: #ffbc00;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: "Tourney", sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-
-  
-  /* Footer */
-  .footer {
-    background-color: #1f1f1f;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-    margin-top: auto;
-    font-size: 14px;
-  }
-  
-
-  @media (max-width: 768px) {
-    /* Ajustar barra de navegación */
-    .navbar-content {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .navbar nav ul {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .navbar .logo {
-      font-size: 20px;
-    }
-
-    .footer {
-        font-size: 12px; /* Ajusta el tamaño del texto del footer */
-        padding: 8px;
-      }
-    }
-
-
-    /* Pantallas extra pequeñas (máximo 480px) */
-@media (max-width: 480px) {
-    /* Ajustar barra de navegación aún más */
-    .navbar nav ul {
-      gap: 5px;
-    }
-    .navbar .logo {
-      font-size: 18px;
-    }
+.navbar {
+  background-color: #1f1f1f;
+  padding:0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 
-/* Estilos para pantallas pequeñas (menor a 768px) */
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  
+}
+
+
+.navbar .logo {
+  font-size: 24px;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 0; 
+  margin-bottom: 0; 
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar nav ul li a {
+  text-decoration: none;
+  color: #bbb;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+  color: #ffbc00;
+}
+
+
+
+.navbar nav ul li {
+  display: flex;
+  align-items: center; 
+}
+
+.navbar nav ul li a {
+  padding: 5px 0; 
+}
+
+.hamburger-menu {
+  display: none; 
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 11; 
+  position: fixed; 
+  top: 20px; 
+  right: 20px; 
+}
+
+
+.hamburger-menu span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+
+#mobile-menu {
+  display: none; 
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #1f1f1f;
+  width: 60%; 
+  height: 100%; 
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  padding: 20px;
+  overflow-y: auto; 
+}
+
+
+#mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+  overflow-y: auto; 
+}
+
+
+#mobile-menu ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+#mobile-menu ul li a:hover {
+  color: #ffbc00;
+}
+
+
+#mobile-menu.active {
+  display: flex; 
+  flex-direction: column;
+}
+
+
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+
+.navbar {
+  background-color: #1f1f1f;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding-top: 1%; 
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar nav ul li a {
+  text-decoration: none;
+  color: #bbb;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+  color: #ffbc00;
+}
+
+
+
+/* Footer */
+.footer {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto;
+  font-size: 14px;
+}
+
 @media (max-width: 768px) {
-    .navbar-content {
-      flex-direction: column;
-      align-items: center;
-    }
+
+  .navbar-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar .logo {
+    font-size: 20px;
+  }
+
+  .footer {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .navbar nav ul {
+    gap: 5px;
+  }
+  .navbar .logo {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navbar-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar nav ul {
+    display: none; 
+  }
+
+  .hamburger-menu {
+    display: flex; 
+  }
+
+  .content {
+    padding: 20px;
+  }
+
   
-    .navbar nav ul {
-      display: none; /* Ocultar el menú de navegación normal */
-    }
-  
-    .hamburger-menu {
-      display: flex; /* Mostrar el icono del menú hamburguesa */
-    }
-  
-    .content {
-      padding: 20px;
-    }
-  
-    /* Mostrar el menú hamburguesa al hacer click */
-    #mobile-menu {
-      display: none;
-    }
+  #mobile-menu {
+    display: none;
+  }
 }
 
 select {

@@ -36,8 +36,8 @@
     font-size: 24px;
     color: #ffffff;
     text-decoration: none;
-    margin-top: 0; /* Elimina cualquier margen adicional del logo */
-    margin-bottom: 0; /* Elimina cualquier margen inferior */
+    margin-top: 0; 
+    margin-bottom: 0; 
   }
   
   .navbar nav ul {
@@ -58,30 +58,30 @@
   }
   
   
-  /* Ajustar el espaciado y la altura de los enlaces */
+ 
   .navbar nav ul li {
     display: flex;
-    align-items: center; /* Centra los enlaces verticalmente */
+    align-items: center; 
   }
   
   .navbar nav ul li a {
-    padding: 5px 0; /* Reduce el espacio vertical de cada enlace */
+    padding: 5px 0; 
   }
   
   .hamburger-menu {
-    display: none; /* Visible solo en pantallas pequeñas */
+    display: none; 
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 20px;
     cursor: pointer;
-    z-index: 11; /* Asegura que esté encima del resto */
-    position: fixed; /* Anclado */
-    top: 20px; /* Ajusta la distancia desde la parte superior */
-    right: 20px; /* Ajusta la distancia desde el borde derecho */
+    z-index: 11; 
+    position: fixed; 
+    top: 20px; 
+    right: 20px; 
   }
   
-  /* Opcional: para que el menú hamburguesa sea más visible */
+  
   .hamburger-menu span {
     display: block;
     height: 3px;
@@ -91,34 +91,34 @@
     transition: all 0.3s ease;
   }
   
-  /* Menú desplegable */
+ 
   #mobile-menu {
-    display: none; /* Oculto por defecto */
+    display: none; 
     position: fixed;
     top: 0;
     right: 0;
     background-color: #1f1f1f;
-    width: 60%; /* Ajusta el ancho al 60% de la pantalla */
-    height: 100%; /* Ocupa el 100% de la altura */
+    width: 60%; 
+    height: 100%; 
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 10;
     padding: 20px;
-    overflow-y: auto; /* Permite desplazarse si las opciones son muchas */
+    overflow-y: auto; 
   }
   
-  /* Ajustar el espacio entre las opciones */
+  
   #mobile-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espacio reducido entre las opciones */
+    gap: 15px;
     height: 100%;
-    overflow-y: auto; /* Permite el desplazamiento si es necesario */
+    overflow-y: auto; 
   }
   
-  /* Enlaces del menú */
+
   #mobile-menu ul li a {
     text-decoration: none;
     color: #fff;
@@ -130,19 +130,19 @@
     color: #ffbc00;
   }
   
-  /* ===== Mostrar el menú al hacer click ===== */
+ 
   #mobile-menu.active {
-    display: flex; /* Mostrar el menú cuando está activo */
+    display: flex; 
     flex-direction: column;
   }
   
-  /* Animaciones del menú hamburguesa */
+
   .hamburger-menu.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
   
   .hamburger-menu.active span:nth-child(2) {
-    opacity: 0; /* Ocultar la barra central */
+    opacity: 0;
   }
   
   .hamburger-menu.active span:nth-child(3) {
@@ -150,7 +150,7 @@
   }
   
   
-  /* Barra de navegación (estilo normal) */
+  
   .navbar {
     background-color: #1f1f1f;
     padding: 10px 20px;
@@ -158,7 +158,7 @@
     top: 0;
     width: 100%;
     z-index: 10;
-    padding-top: 1%; /* Ajusta el espacio superior para que el contenido no se solape con el header */
+    padding-top: 1%; 
   }
   
   .navbar-content {
@@ -193,7 +193,7 @@
 
 
 
-  /* Competitions Container */
+
   .competitions {
     background-color: #1f1f1f;
     padding: 20px;
@@ -203,26 +203,26 @@
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 12px; /* Espacio entre elementos, ajustado a 10px para reducir el espacio */
+    gap: 12px;
   }
   
   .competitions h3 {
-    margin-bottom: 20px; /* Espaciado entre el título y las filas de competiciones */
+    margin-bottom: 20px; 
     font-size: 24px;
     text-align: left;
-    width: 100%; /* Asegura que el título esté en una fila completa */
+    width: 100%;
   }
   
   .competition {
     display: flex;
-    align-items: center; /* Alinea el logo y el texto verticalmente */
-    justify-content: flex-start; /* Alinea al principio */
+    align-items: center; 
+    justify-content: flex-start; 
     padding: 5px;
     background-color: rgba(255, 255, 255, 0.212); 
     border-radius: 5px;
-    flex: 0 1 calc(20% - 10px); /* 5 elementos por fila */
+    flex: 0 1 calc(20% - 10px); 
     max-width: calc(20% - 10px);
-    overflow: hidden; /* Asegura que el contenido no se desborde */
+    overflow: hidden; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
@@ -240,22 +240,22 @@
 }
 
   .competition img {
-    width: 40px; /* Tamaño del logo */
+    width: 40px;
     height: 40px;
-    object-fit: contain; /* Mantiene la proporción sin distorsionar la imagen */
-    margin-right: 5px; /* Espaciado entre el logo y el texto */
-    flex-shrink: 0; /* No permite que la imagen se encoja */
+    object-fit: contain; 
+    margin-right: 5px; 
+    flex-shrink: 0;
   }
   
   .competition h5 {
-    font-size: 14px; /* Tamaño de la fuente del texto */
+    font-size: 14px; 
     color: #fff;
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es muy largo */
+    text-overflow: ellipsis; 
   }
   
-  /* Footer */
+
   .footer {
     background-color: #1f1f1f;
     color: #ffffff;
@@ -267,7 +267,7 @@
   
 
   @media (max-width: 768px) {
-    /* Ajustar barra de navegación */
+    
     .navbar-content {
       flex-direction: column;
       align-items: center;
@@ -283,15 +283,15 @@
     }
 
     .footer {
-        font-size: 12px; /* Ajusta el tamaño del texto del footer */
+        font-size: 12px; 
         padding: 8px;
       }
     }
 
 
-    /* Pantallas extra pequeñas (máximo 480px) */
+    
 @media (max-width: 480px) {
-    /* Ajustar barra de navegación aún más */
+    
     .navbar nav ul {
       gap: 5px;
     }
@@ -301,7 +301,7 @@
 }
 
 
-/* Estilos para pantallas pequeñas (menor a 768px) */
+
 @media (max-width: 768px) {
     .navbar-content {
       flex-direction: column;
@@ -309,18 +309,18 @@
     }
   
     .navbar nav ul {
-      display: none; /* Ocultar el menú de navegación normal */
+      display: none; 
     }
   
     .hamburger-menu {
-      display: flex; /* Mostrar el icono del menú hamburguesa */
+      display: flex;
     }
   
     .content {
       padding: 20px;
     }
   
-    /* Mostrar el menú hamburguesa al hacer click */
+    
     #mobile-menu {
       display: none;
     }
@@ -330,7 +330,7 @@
 
   }
   
-  /* Responsive: Menu hamburguesa para pantallas aún más pequeñas */
+
   @media (max-width: 480px) {
     .navbar .logo {
       font-size: 20px;
@@ -349,28 +349,26 @@
 
   }
 
-/* Estilo para las secciones */
 
-/* Aseguramos que la sección clasificacion ocupe toda la pantalla */
 .content {
   display: flex;
-  justify-content: center; /* Centra las secciones horizontalmente */
-  align-items: center; /* Centra las secciones verticalmente */
-  min-height: 100vh; /* Hace que ocupe toda la altura de la pantalla */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   margin-bottom: 20px;
 }
 
-/* Estilo para la tabla */
+
 .clasificacion-tabla {
-  width: 80%; /* Ajusta el tamaño de la tabla a tu gusto */
-  max-width: 1000px; /* Un límite máximo de ancho */
-  border-collapse: collapse; /* Elimina los espacios entre celdas */
+  width: 80%; 
+  max-width: 1000px; 
+  border-collapse: collapse; 
   background-color: #121212;
   
-  margin: 0 auto; /* Centra la tabla horizontalmente */
+  margin: 0 auto; 
 }
 
-/* Estilos para las celdas de la tabla */
+
 .clasificacion-tabla th,
 .clasificacion-tabla td {
   padding: 10px 20px;
@@ -380,121 +378,115 @@
  
 }
 
-/* Estilo para las cabeceras */
+
 .clasificacion-tabla th {
-  background-color:#121212 ; /* Un verde para las cabeceras */
+  background-color:#121212 ; 
   color: white;
 }
 
-/* Estilo para las filas alternadas */
 
-/* Efecto hover para toda la fila */
+
+
 .clasificacion-tabla tr:hover {
-  background-color: #ffbc00; /* Cambio de fondo al pasar el ratón */
-  color: #fff; /* Asegura que el texto también cambie de color al hacer hover */
+  background-color: #ffbc00; 
+  color: #fff; 
 }
 
-/* Asegura que el texto de los logotipos y los nombres de los equipos se alineen bien */
+
 .clasificacion-tabla td img {
-  width: 25px; /* Tamaño del logo del equipo */
+  width: 25px; 
   height: 25px;
   vertical-align: middle;
-  margin-right: 8px; /* Espacio entre el logo y el nombre del equipo */
-  border-radius: 50%; /* Redondeo del logo */
-  object-fit: contain; /* Asegura que la imagen no se deforme */
+  margin-right: 8px; 
+  border-radius: 50%;
+  object-fit: contain; 
 }
 
-/* Hacer que la tabla sea más accesible y limpia */
+
 .clasificacion-tabla td,
 .clasificacion-tabla th {
-  text-align: center; /* Centra el texto en las celdas */
-  vertical-align: middle; /* Centra el texto verticalmente */
+  text-align: center; 
+  vertical-align: middle; 
 }
 
-/* Efecto hover para toda la fila con transición y color transparente */
+
 .clasificacion-tabla tr {
-  transition: background-color 0.3s ease, color 0.3s ease; /* Animación suave */
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Efecto hover con transparencia */
+
 .clasificacion-tabla tr:hover {
-  background-color: rgba(255, 188, 0, 0.7); /* Fondo con opacidad */
-  color: #fff; /* Asegura que el texto también cambie de color */
+  background-color: rgba(255, 188, 0, 0.7); 
+  color: #fff; 
 }
 
-/* Asegura que el hover también funcione en las celdas */
 
 
 
 
 
-/* Opcional: bordes redondeados en las celdas */
-
-
-/* Contenedor de resultados */
-/* Contenedor de resultados */
 #resultados {
   padding: 20px;
-  background-color: #121212; /* Fondo oscuro */
+  background-color: #121212; 
   color: white;
-  overflow-x: hidden; /* Evitar scroll horizontal */
-  max-width: 100%; /* Asegura que el contenedor no se sobrepase */
+  overflow-x: hidden; 
+  max-width: 100%; 
 }
 
-/* Título de la jornada */
+
 .jornada h3 {
   font-size: 24px;
   margin-bottom: 10px;
-  color: #ffcc00; /* Amarillo */
-  text-align: left; /* Alineación izquierda */
+  color: #ffcc00; 
+  text-align: left; 
 }
 
-/* Contenedor de la fila de partidos */
+
 .fila-partidos {
-  display: flex; /* Organiza partidos en una fila */
-  flex-wrap: wrap; /* Permite que los partidos se acomoden en nuevas filas cuando no haya espacio */
-  gap: 10px; /* Espacio entre partidos */
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
   padding: 10px 0;
-  justify-content: flex-start; /* Alineación de partidos hacia la izquierda */
-  overflow-x: hidden; /* Evitar scroll horizontal */
-  margin-bottom: 20px; /* Separación entre jornadas */
+  justify-content: flex-start;
+  overflow-x: hidden; 
+  margin-bottom: 20px; 
 }
 
-/* Tarjetas de partidos */
+
 .partido {
-  background-color: #1e1e1e; /* Fondo gris oscuro */
+  background-color: #1e1e1e; 
   border-radius: 10px;
-  padding: 10px; /* Reducido padding */
+  padding: 10px; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 150px; /* Ancho fijo para evitar que los partidos se desborden */
-  min-width: 150px; /* Ancho mínimo */
-  max-width: 180px; /* Ancho máximo */
-  flex-shrink: 0; /* Evita que las tarjetas se compriman */
+  width: 150px; 
+  min-width: 150px; 
+  max-width: 180px; 
+  flex-shrink: 0; 
 }
 
-/* Estilo de equipos */
+
 .equipo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5px 0; /* Reducido el margen */
+  margin: 5px 0;
 }
 
 .equipo img {
-  width: 40px; /* Reducido el tamaño de las imágenes */
-  height: 40px; /* Reducido el tamaño de las imágenes */
+  width: 40px; 
+  height: 40px; 
   border-radius: 50%;
   background-color: white;
   object-fit: contain;
 }
 
 .equipo span {
-  font-size: 12px; /* Reducido el tamaño del texto */
+  font-size: 12px; 
   font-weight: bold;
   color: white;
   margin-top: 5px;
@@ -503,76 +495,76 @@
 
 /* Marcador */
 .marcador {
-  font-size: 16px; /* Reducido el tamaño del marcador */
+  font-size: 16px;
   font-weight: bold;
-  color: #ffcc00; /* Amarillo */
-  margin: 5px 0; /* Reducido el margen */
+  color: #ffcc00; 
+  margin: 5px 0; 
 }
 
-/* Ajustes para pantallas más pequeñas */
+
 @media (max-width: 768px) {
   .fila-partidos {
-    justify-content: center; /* Centrar los partidos en pantallas pequeñas */
+    justify-content: center; 
   }
   
   .partido {
-    width: 45%; /* Asegura que los partidos ocupen menos espacio en pantallas pequeñas */
-    margin-bottom: 10px; /* Margen entre partidos */
+    width: 45%; 
+    margin-bottom: 10px; 
   }
 }
 
-/* Contenedor de las pestañas */
+
 .tabs {
-  display: flex; /* Usamos flexbox para organizar los botones */
-  justify-content: center; /* Centra los botones horizontalmente */
-  gap: 20px; /* Espacio entre los botones */
-  margin-top: 20px; /* Espacio superior para los botones */
+  display: flex;
+  justify-content: center; 
+  gap: 20px; 
+  margin-top: 20px; 
   margin-bottom: 20px;
 }
 
-/* Estilo para los botones */
+
 .tab {
-  background-color: #333; /* Fondo oscuro para los botones */
-  color: #fff; /* Texto blanco */
-  font-size: 16px; /* Tamaño de fuente */
-  padding: 10px 20px; /* Espaciado interno de los botones */
-  border: 2px solid #ffcc00; /* Borde amarillo para resaltar */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor cuando pasa sobre el botón */
-  transition: all 0.3s ease; /* Animación suave al pasar el mouse */
+  background-color: #333;
+  color: #fff; 
+  font-size: 16px; 
+  padding: 10px 20px; 
+  border: 2px solid #ffcc00; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
 }
 
-/* Estilo cuando el botón es activado o seleccionado */
+
 .tab.active {
-  background-color: #ffcc00; /* Fondo amarillo cuando se activa */
-  color: #333; /* Cambiar texto a oscuro */
-  font-weight: bold; /* Hacer texto negrita */
+  background-color: #ffcc00; 
+  color: #333; 
+  font-weight: bold; 
 }
 
-/* Estilo al pasar el mouse sobre el botón */
+
 .tab:hover {
-  background-color: #444; /* Fondo un poco más claro al pasar el mouse */
-  border-color: #ffcc00; /* Mantener el borde amarillo */
-  transform: scale(1.05); /* Aumentar ligeramente el tamaño */
+  background-color: #444; 
+  border-color: #ffcc00; 
+  transform: scale(1.05); 
 }
 
-/* Estilo cuando el botón está desactivado (no está seleccionado) */
+
 .tab:disabled {
-  background-color: #555; /* Fondo más oscuro */
-  color: #888; /* Texto gris */
-  border-color: #888; /* Borde gris */
-  cursor: not-allowed; /* Cursor de no permitido */
+  background-color: #555;
+  color: #888;
+  border-color: #888; 
+  cursor: not-allowed; 
 }
 
 
-/* Estilo para el botón "Cargar todos" */
+
 .btn-cargar {
   display: block;
   width: 200px;
   margin: 20px auto;
   padding: 10px;
-  background-color: #ffbc00; /* Amarillo */
-  color: #121212; /* Fondo oscuro */
+  background-color: #ffbc00; 
+  color: #121212; 
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -581,23 +573,23 @@
 }
 
 .btn-cargar:hover {
-  background-color: #ffcc33; /* Amarillo más claro en hover */
+  background-color: #ffcc33; 
 }
 
 
 
-/* Estilo para la tabla */
+
 .goleadores-tabla {
-  width: 80%; /* Ajusta el tamaño de la tabla a tu gusto */
-  max-width: 1000px; /* Un límite máximo de ancho */
-  border-collapse: collapse; /* Elimina los espacios entre celdas */
+  width: 80%; 
+  max-width: 1000px; 
+  border-collapse: collapse; 
   background-color: #121212;
-  margin: 0 auto; /*Centra la tabla horizontalmente*/
+  margin: 0 auto; 
   
   
 }
 
-/* Estilos para las celdas de la tabla */
+
 .goleadores-tabla th,
 .goleadores-tabla td {
   padding: 10px 20px;
@@ -607,44 +599,43 @@
  
 }
 
-/* Estilo para las cabeceras */
+
 .goleadores-tabla th {
   background-color:#121212 ; 
   color: white;
 }
 
-/* Estilo para las filas alternadas */
 
-/* Efecto hover para toda la fila */
+
+
 .goleadores-tabla tr:hover {
-  background-color: #ffbc00; /* Cambio de fondo al pasar el ratón */
-  color: #fff; /* Asegura que el texto también cambie de color al hacer hover */
+  background-color: #ffbc00; 
+  color: #fff; 
 }
 
-/* Asegura que el texto de los logotipos y los nombres de los equipos se alineen bien */
+
 .goleadores-tabla td img {
-  width: 25px; /* Tamaño del logo del equipo */
+  width: 25px;
   height: 25px;
   vertical-align: middle;
-  margin-right: 8px; /* Espacio entre el logo y el nombre del equipo */
-  border-radius: 50%; /* Redondeo del logo */
-  object-fit: contain; /* Asegura que la imagen no se deforme */
+  margin-right: 8px;
+  border-radius: 50%; 
+  object-fit: contain; 
 }
 
-/* Hacer que la tabla sea más accesible y limpia */
 .goleadores-tabla td,
 .goleadores-tabla th {
-  text-align: center; /* Centra el texto en las celdas */
-  vertical-align: middle; /* Centra el texto verticalmente */
+  text-align: center; 
+  vertical-align: middle; 
 }
 
-/* Efecto hover para toda la fila con transición y color transparente */
+
 .goleadores-tabla tr {
-  transition: background-color 0.3s ease, color 0.3s ease; /* Animación suave */
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Efecto hover con transparencia */
+
 .goleadores-tabla tr:hover {
-  background-color: rgba(255, 188, 0, 0.7); /* Fondo con opacidad */
-  color: #fff; /* Asegura que el texto también cambie de color */
+  background-color: rgba(255, 188, 0, 0.7); 
+  color: #fff; 
 }

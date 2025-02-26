@@ -15,26 +15,29 @@ body {
 
 .navbar {
   background-color: #1f1f1f;
-  padding: 0;
+  padding:0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10;
 }
 
+
 .navbar-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0;
+  
 }
+
 
 .navbar .logo {
   font-size: 24px;
   color: #ffffff;
   text-decoration: none;
-  margin-top: 0; /* Elimina cualquier margen adicional del logo */
-  margin-bottom: 0; /* Elimina cualquier margen inferior */
+  margin-top: 0; 
+  margin-bottom: 0; 
 }
 
 .navbar nav ul {
@@ -54,30 +57,31 @@ body {
   color: #ffbc00;
 }
 
-/* Ajustar el espaciado y la altura de los enlaces */
+
+
 .navbar nav ul li {
   display: flex;
-  align-items: center; /* Centra los enlaces verticalmente */
+  align-items: center; 
 }
 
 .navbar nav ul li a {
-  padding: 5px 0; /* Reduce el espacio vertical de cada enlace */
+  padding: 5px 0; 
 }
 
 .hamburger-menu {
-  display: none; /* Visible solo en pantallas pequeñas */
+  display: none; 
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
   height: 20px;
   cursor: pointer;
-  z-index: 11; /* Asegura que esté encima del resto */
-  position: fixed; /* Anclado */
-  top: 20px; /* Ajusta la distancia desde la parte superior */
-  right: 20px; /* Ajusta la distancia desde el borde derecho */
+  z-index: 11; 
+  position: fixed; 
+  top: 20px; 
+  right: 20px; 
 }
 
-/* Opcional: para que el menú hamburguesa sea más visible */
+
 .hamburger-menu span {
   display: block;
   height: 3px;
@@ -87,34 +91,34 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Menú desplegable */
+
 #mobile-menu {
-  display: none; /* Oculto por defecto */
+  display: none; 
   position: fixed;
   top: 0;
   right: 0;
   background-color: #1f1f1f;
-  width: 60%; /* Ajusta el ancho al 60% de la pantalla */
-  height: 100%; /* Ocupa el 100% de la altura */
+  width: 60%; 
+  height: 100%; 
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 10;
   padding: 20px;
-  overflow-y: auto; /* Permite desplazarse si las opciones son muchas */
+  overflow-y: auto; 
 }
 
-/* Ajustar el espacio entre las opciones */
+
 #mobile-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espacio reducido entre las opciones */
+  gap: 15px;
   height: 100%;
-  overflow-y: auto; /* Permite el desplazamiento si es necesario */
+  overflow-y: auto; 
 }
 
-/* Enlaces del menú */
+
 #mobile-menu ul li a {
   text-decoration: none;
   color: #fff;
@@ -126,26 +130,27 @@ body {
   color: #ffbc00;
 }
 
-/* ===== Mostrar el menú al hacer click ===== */
+
 #mobile-menu.active {
-  display: flex; /* Mostrar el menú cuando está activo */
+  display: flex; 
   flex-direction: column;
 }
 
-/* Animaciones del menú hamburguesa */
+
 .hamburger-menu.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
 
 .hamburger-menu.active span:nth-child(2) {
-  opacity: 0; /* Ocultar la barra central */
+  opacity: 0;
 }
 
 .hamburger-menu.active span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Barra de navegación (estilo normal) */
+
+
 .navbar {
   background-color: #1f1f1f;
   padding: 10px 20px;
@@ -153,7 +158,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 10;
-  padding-top: 1%; /* Ajusta el espacio superior para que el contenido no se solape con el header */
+  padding-top: 1%; 
 }
 
 .navbar-content {
@@ -185,7 +190,9 @@ body {
   color: #ffbc00;
 }
 
-/* Footer */
+
+
+
 .footer {
   background-color: #1f1f1f;
   color: #ffffff;
@@ -196,7 +203,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* Ajustar barra de navegación */
+
   .navbar-content {
     flex-direction: column;
     align-items: center;
@@ -212,14 +219,14 @@ body {
   }
 
   .footer {
-    font-size: 12px; /* Ajusta el tamaño del texto del footer */
+    font-size: 12px;
     padding: 8px;
   }
 }
 
-/* Pantallas extra pequeñas (máximo 480px) */
+
 @media (max-width: 480px) {
-  /* Ajustar barra de navegación aún más */
+
   .navbar nav ul {
     gap: 5px;
   }
@@ -228,7 +235,7 @@ body {
   }
 }
 
-/* Estilos para pantallas pequeñas (menor a 768px) */
+
 @media (max-width: 768px) {
   .navbar-content {
     flex-direction: column;
@@ -236,26 +243,26 @@ body {
   }
 
   .navbar nav ul {
-    display: none; /* Ocultar el menú de navegación normal */
+    display: none; 
   }
 
   .hamburger-menu {
-    display: flex; /* Mostrar el icono del menú hamburguesa */
+    display: flex; 
   }
 
   .content {
     padding: 20px;
   }
 
-  /* Mostrar el menú hamburguesa al hacer click */
+  
   #mobile-menu {
     display: none;
   }
 }
 
 select {
-  max-height: 200px; /* Ajusta el tamaño máximo del desplegable */
-  overflow-y: auto; /* Activa el scroll si hay demasiadas opciones */
+  max-height: 200px; 
+  overflow-y: auto; 
 }
 
 select option {
@@ -266,38 +273,38 @@ select option {
 
 #selectores {
   display: flex;
-  flex-direction: column; /* Mantiene el título arriba y el select debajo */
-  align-items: flex-start; /* Alinea a la izquierda */
-  justify-content: flex-start; /* Mantiene el contenido en la parte superior */
-  margin-top: -116px; /* Ajusta para moverlo arriba o abajo */
-  margin-left: 110px; /* Aumenta este valor para moverlo más a la izquierda */
+  flex-direction: column;
+  align-items: flex-start; 
+  justify-content: flex-start; 
+  margin-top: -116px;
+  margin-left: 110px; 
   overflow: visible !important;
   min-height: 290px;
 }
 
 #titulo_inicial {
-  margin-top: 100px; /* Ajusta para moverlo arriba o abajo */
+  margin-top: 100px;
   text-align: center;
 }
 
 #titulo1 {
-  margin-top: 100px; /* Ajusta para moverlo arriba o abajo */
+  margin-top: 100px; 
   text-align: center;
-  margin-right: 70%; /* Aumenta este valor para moverlo más a la izquierda */
+  margin-right: 70%;
 }
 
 #titulo2 {
-  margin-top: 20px; /* Ajusta para moverlo arriba o abajo */
+  margin-top: 20px; 
   text-align: center;
   margin-bottom: 20px;
-  margin-right: 70%; /* Aumenta este valor para moverlo más a la izquierda */
+  margin-right: 70%; 
 }
 
 #titulo3 {
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
-  margin-right: 70%; /* Aumenta este valor para moverlo más a la izquierda */
+  margin-right: 70%; 
 }
 
 #select-jugador {
@@ -306,35 +313,35 @@ select option {
   height: auto;
 }
 
-/* Estilos generales para los select */
+
 select {
   width: 100%;
-  max-width: 300px; /* Ajusta el ancho máximo */
+  max-width: 300px; 
   padding: 10px;
   font-size: 16px;
-  border: 2px solid #ffbc00; /* Borde con el color predominante */
+  border: 2px solid #ffbc00; 
   border-radius: 5px;
-  background-color: #1f1f1f; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
-  appearance: none; /* Elimina el estilo por defecto del navegador */
+  background-color: #1f1f1f;
+  color: #fff; 
+  appearance: none; 
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* Cuando el select está enfocado */
+
 select:focus {
   outline: none;
-  border-color: #ffa500; /* Color un poco más fuerte al enfocar */
+  border-color: #ffa500; 
   box-shadow: 0 0 8px rgba(255, 188, 0, 0.8);
 }
 
-/* Opciones dentro del select */
+
 select option {
-  background-color: #1f1f1f; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
+  background-color: #1f1f1f;
+  color: #fff; 
 }
 
-/* Estilos para los títulos */
+
 h2 {
   font-size: 18px;
   color: #ffbc00;
@@ -342,14 +349,14 @@ h2 {
   text-align: center;
 }
 
-/* Centrar los selects */
+
 #select-competicion,
 #select-equipo,
 #select-jugador {
   display: block;
 }
 
-/* Efecto hover */
+
 select:hover {
   background-color: #292929;
 }
@@ -357,16 +364,16 @@ select:hover {
 #contenedor-plantilla {
   position: absolute;
   margin-left: 60px;
-  top: 305px; /* Ajusta según la altura de los otros elementos */
-  left: 0px; /* Ajusta según el diseño */
+  top: 305px; 
+  left: 0px; 
 }
 
 #tabla-plantilla {
   width: 100%;
   max-width: 500px;
   border-collapse: collapse;
-  background-color: #111; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
+  background-color: #111; 
+  color: #fff; 
   border-radius: 8px;
   overflow: hidden;
 }
@@ -383,20 +390,20 @@ select:hover {
 }
 
 #tabla-plantilla tr:not(:first-child):hover {
-  background-color: #ffa500; /* Dorado */
+  background-color: #ffa500; 
   color: white;
-  box-shadow: 0px 0px 15px rgba(255, 165, 0, 0.6); /* Sutil iluminación */
-  transform: scale(1.02); /* Aumento ligero de tamaño */
+  box-shadow: 0px 0px 15px rgba(255, 165, 0, 0.6); 
+  transform: scale(1.02); 
   cursor: pointer;
 }
 
-/* Asegurar que el texto dentro de las celdas cambia de color */
+
 #tabla-plantilla tr:not(:first-child):hover td {
   color: white;
 }
 
 #tabla-plantilla th {
-  background-color: #222; /* Gris oscuro */
+  background-color: #222; 
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -405,7 +412,7 @@ select:hover {
   border-bottom: none;
 }
 
-/* Eliminar el fondo negro en las celdas para evitar conflictos con el hover */
+
 #tabla-plantilla td {
   color: white;
 }
@@ -440,8 +447,8 @@ select:hover {
  
   
   width: 100vw; 
-  max-width: 900px; /* Un poco más ancho */
-  height: 220px; /* Más espacio */
+  max-width: 900px; 
+  height: 220px;
   
   
   
@@ -453,33 +460,33 @@ select:hover {
   overflow-y: hidden; 
   white-space: nowrap;
   
-  padding: 15px; /* Más espacio interno */
+  padding: 15px; 
   scroll-snap-type: x mandatory;
 }
 
-/* 🔥 Tarjetas de partidos */
+
 .partido-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   
-  min-width: 260px; /* Ancho un poco mayor */
+  min-width: 260px; 
   max-width: 320px;
-  height: 190px; /* Más altura */
+  height: 190px; 
   
-  background: rgba(255, 215, 0, 0.1); /* Dorado sutil */
+  background: rgba(255, 215, 0, 0.1); 
   border: 2px solid gold;
   border-radius: 10px;
   text-align: center;
   padding: 15px;
   scroll-snap-align: center;
   
-  box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.5); /* Sombra dorada */
-  margin-right: 15px; /* Espacio entre tarjetas */
+  box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.5); 
+  margin-right: 15px;
 }
 
-/* 🔥 Equipos */
+
 .equipo {
   display: flex;
   flex-direction: column;
@@ -487,7 +494,7 @@ select:hover {
 }
 
 .escudo {
-  width: 60px; /* Un poco más grande */
+  width: 60px; 
   height: 60px;
 }
 
@@ -505,9 +512,9 @@ select:hover {
   margin-top: 5px;
   
   width: 90%;
-  word-wrap: break-word; /* Permite que se parta en varias líneas */
+  word-wrap: break-word; 
   overflow-wrap: break-word;
-  white-space: normal; /* Permite saltos de línea */
+  white-space: normal; 
 }
 
 #contenedor-last-partidos {
@@ -517,8 +524,8 @@ select:hover {
    
   
   width: 100vw; 
-  max-width: 900px; /* Un poco más ancho */
-  height: 220px; /* Más espacio */
+  max-width: 900px; 
+  height: 220px; 
   
   
   
@@ -530,6 +537,6 @@ select:hover {
   overflow-y: hidden; 
   white-space: nowrap;
   
-  padding: 15px; /* Más espacio interno */
+  padding: 15px; 
   scroll-snap-type: x mandatory;
 }

@@ -36,8 +36,8 @@ body {
   font-size: 24px;
   color: #ffffff;
   text-decoration: none;
-  margin-top: 0; /* Elimina cualquier margen adicional del logo */
-  margin-bottom: 0; /* Elimina cualquier margen inferior */
+  margin-top: 0; 
+  margin-bottom: 0; 
 }
 
 .navbar nav ul {
@@ -58,19 +58,19 @@ body {
 }
 
 
-/* Ajustar el espaciado y la altura de los enlaces */
+
 .navbar nav ul li {
   display: flex;
-  align-items: center; /* Centra los enlaces verticalmente */
+  align-items: center;
 }
 
 .navbar nav ul li a {
-  padding: 5px 0; /* Reduce el espacio vertical de cada enlace */
+  padding: 5px 0; 
 }
 
 
 .content {
-  margin-top: 90px; /* Ajusta el margen superior para que el contenido no quede debajo del header */
+  margin-top: 90px; 
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -219,11 +219,11 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ======== Media Queries para diseño responsivo ======== */
 
-/* Pantallas pequeñas (máximo 768px) */
+
+
 @media (max-width: 768px) {
-  /* Ajustar barra de navegación */
+
   .navbar-content {
     flex-direction: column;
     align-items: center;
@@ -238,54 +238,54 @@ body {
     font-size: 20px;
   }
 
-  /* Ajustar contenido principal */
+
   .content {
     padding: 10px;
   }
 
-  /* Noticias destacadas */
+
   .news-cards {
-    flex-direction: column; /* Cambia las tarjetas a una sola columna */
+    flex-direction: column; 
     gap: 10px;
   }
   .news-card {
-    width: 100%; /* Ocupa todo el ancho disponible */
+    width: 100%; 
   }
 
   /* Noticias laterales */
   .side-news {
-    flex-direction: column; /* Noticias en una sola columna */
+    flex-direction: column; 
     gap: 10px;
   }
   .left-side,
   .right-side {
     flex: none;
-    width: 100%; /* Ocupa todo el ancho */
+    width: 100%; 
   }
 
   .news-item img {
-    width: 100px; /* Reduce el tamaño de las imágenes */
+    width: 100px;
     height: 80px;
   }
 
   .news-item h3 {
-    font-size: 16px; /* Ajusta el tamaño de los títulos */
+    font-size: 16px; 
   }
 
   .news-item p {
-    font-size: 12px; /* Ajusta el tamaño del texto */
+    font-size: 12px;
   }
 
   /* Footer */
   .footer {
-    font-size: 12px; /* Ajusta el tamaño del texto del footer */
+    font-size: 12px; 
     padding: 8px;
   }
 }
 
-/* Pantallas extra pequeñas (máximo 480px) */
+
 @media (max-width: 480px) {
-  /* Ajustar barra de navegación aún más */
+  
   .navbar nav ul {
     gap: 5px;
   }
@@ -293,7 +293,7 @@ body {
     font-size: 18px;
   }
 
-  /* Ajustar tamaño del texto */
+
   .featured-news h2 {
     font-size: 20px;
   }
@@ -305,7 +305,7 @@ body {
     font-size: 11px;
   }
 
-  /* Reducir tamaño de imágenes */
+
   .news-item img {
     width: 80px;
     height: 60px;
@@ -313,28 +313,24 @@ body {
 
   .news-card {
     padding: 10px;
-    box-shadow: none; /* Opcional: elimina sombra en pantallas pequeñas */
+    box-shadow: none; 
   }
 }
 
-/* ===== Estilos para el menú hamburguesa ===== */
-
-/* Estilo inicial del menú */
-/* Menú hamburguesa anclado al header */
 .hamburger-menu {
-  display: none; /* Visible solo en pantallas pequeñas */
+  display: none; 
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
   height: 20px;
   cursor: pointer;
-  z-index: 11; /* Asegura que esté encima del resto */
-  position: fixed; /* Anclado */
-  top: 20px; /* Ajusta la distancia desde la parte superior */
-  right: 20px; /* Ajusta la distancia desde el borde derecho */
+  z-index: 11; 
+  position: fixed;
+  top: 20px;
+  right: 20px; 
 }
 
-/* Opcional: para que el menú hamburguesa sea más visible */
+
 .hamburger-menu span {
   display: block;
   height: 3px;
@@ -344,34 +340,33 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Menú desplegable */
+
 #mobile-menu {
-  display: none; /* Oculto por defecto */
+  display: none; 
   position: fixed;
   top: 0;
   right: 0;
   background-color: #1f1f1f;
-  width: 60%; /* Ajusta el ancho al 60% de la pantalla */
-  height: 100%; /* Ocupa el 100% de la altura */
+  width: 60%; 
+  height: 100%; 
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 10;
   padding: 20px;
-  overflow-y: auto; /* Permite desplazarse si las opciones son muchas */
+  overflow-y: auto; 
 }
 
-/* Ajustar el espacio entre las opciones */
+
 #mobile-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espacio reducido entre las opciones */
+  gap: 15px; 
   height: 100%;
-  overflow-y: auto; /* Permite el desplazamiento si es necesario */
+  overflow-y: auto; 
 }
 
-/* Enlaces del menú */
 #mobile-menu ul li a {
   text-decoration: none;
   color: #fff;
@@ -383,19 +378,19 @@ body {
   color: #ffbc00;
 }
 
-/* ===== Mostrar el menú al hacer click ===== */
+
 #mobile-menu.active {
-  display: flex; /* Mostrar el menú cuando está activo */
+  display: flex; 
   flex-direction: column;
 }
 
-/* Animaciones del menú hamburguesa */
+
 .hamburger-menu.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
 
 .hamburger-menu.active span:nth-child(2) {
-  opacity: 0; /* Ocultar la barra central */
+  opacity: 0; 
 }
 
 .hamburger-menu.active span:nth-child(3) {
@@ -403,7 +398,7 @@ body {
 }
 
 
-/* Barra de navegación (estilo normal) */
+
 .navbar {
   background-color: #1f1f1f;
   padding: 10px 20px;
@@ -411,7 +406,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 10;
-  padding-top: 1%; /* Ajusta el espacio superior para que el contenido no se solape con el header */
+  padding-top: 1%;
 }
 
 .navbar-content {
@@ -443,7 +438,7 @@ body {
   color: #ffbc00;
 }
 
-/* Estilos para pantallas pequeñas (menor a 768px) */
+
 @media (max-width: 768px) {
   .navbar-content {
     flex-direction: column;
@@ -451,24 +446,23 @@ body {
   }
 
   .navbar nav ul {
-    display: none; /* Ocultar el menú de navegación normal */
+    display: none; 
   }
 
   .hamburger-menu {
-    display: flex; /* Mostrar el icono del menú hamburguesa */
+    display: flex; 
   }
 
   .content {
     padding: 10px;
   }
 
-  /* Mostrar el menú hamburguesa al hacer click */
   #mobile-menu {
     display: none;
   }
 }
 
-/* Responsive: Menu hamburguesa para pantallas aún más pequeñas */
+
 @media (max-width: 480px) {
   .navbar .logo {
     font-size: 20px;

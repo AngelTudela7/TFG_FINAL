@@ -1,5 +1,5 @@
 
-// Lógica para el menú hamburguesa
+
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const mobileMenu = document.getElementById('mobile-menu');
 
