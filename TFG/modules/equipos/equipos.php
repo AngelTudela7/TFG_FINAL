@@ -66,8 +66,16 @@ include('includes/database.php');
 </div>
 
 
+<div id="contenedor-plantilla">
+</div>
 
+<div id="contenedor-last-partidos">
+<h1>5 últimos</h1>
+</div>
 
+<div id="contenedor-proximos-partidos">
+ 
+</div>
 
 
   <footer class="footer">

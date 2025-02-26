@@ -231,15 +231,6 @@ async function cargar_partidos(id_competicion) {
    }
 }
 
-
-//Función para cargar goleadores de la liga
-
-
-
-
-
-
-
 //----------------------------------------------------------
 // Función para cargar la clasificación de la competición
 // Función para cargar la clasificación de la competición
@@ -442,9 +433,6 @@ function configurarNavegacionTabs() {
       document.getElementById('cargar-todos').style.display = 'none';
       document.getElementById('goleadores').style.display = 'block';
    });
-
-
-
 
 }
 

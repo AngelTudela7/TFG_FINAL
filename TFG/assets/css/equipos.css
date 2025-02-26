@@ -15,22 +15,19 @@ body {
 
 .navbar {
   background-color: #1f1f1f;
-  padding:0;
+  padding: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10;
 }
 
-
 .navbar-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  
 }
-
 
 .navbar .logo {
   font-size: 24px;
@@ -56,7 +53,6 @@ body {
 .navbar nav ul li a:hover {
   color: #ffbc00;
 }
-
 
 /* Ajustar el espaciado y la altura de los enlaces */
 .navbar nav ul li {
@@ -149,7 +145,6 @@ body {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
 /* Barra de navegación (estilo normal) */
 .navbar {
   background-color: #1f1f1f;
@@ -190,9 +185,6 @@ body {
   color: #ffbc00;
 }
 
-
-
-
 /* Footer */
 .footer {
   background-color: #1f1f1f;
@@ -202,7 +194,6 @@ body {
   margin-top: auto;
   font-size: 14px;
 }
-
 
 @media (max-width: 768px) {
   /* Ajustar barra de navegación */
@@ -221,13 +212,12 @@ body {
   }
 
   .footer {
-      font-size: 12px; /* Ajusta el tamaño del texto del footer */
-      padding: 8px;
-    }
+    font-size: 12px; /* Ajusta el tamaño del texto del footer */
+    padding: 8px;
   }
+}
 
-
-  /* Pantallas extra pequeñas (máximo 480px) */
+/* Pantallas extra pequeñas (máximo 480px) */
 @media (max-width: 480px) {
   /* Ajustar barra de navegación aún más */
   .navbar nav ul {
@@ -237,7 +227,6 @@ body {
     font-size: 18px;
   }
 }
-
 
 /* Estilos para pantallas pequeñas (menor a 768px) */
 @media (max-width: 768px) {
@@ -270,107 +259,277 @@ select {
 }
 
 select option {
-position: absolute;
-bottom: -100%;
-transform: translateY(5px);
-
+  position: absolute;
+  bottom: -100%;
+  transform: translateY(5px);
 }
 
 #selectores {
-display: flex;
-flex-direction: column; /* Mantiene el título arriba y el select debajo */
-align-items: flex-start; /* Alinea a la izquierda */
-justify-content: flex-start; /* Mantiene el contenido en la parte superior */
-margin-top: -100px; /* Ajusta para moverlo arriba o abajo */
-margin-left: 110px; /* Aumenta este valor para moverlo más a la izquierda */
-overflow: visible !important;
-min-height: 500px; /* O más, dependiendo del diseño */
+  display: flex;
+  flex-direction: column; /* Mantiene el título arriba y el select debajo */
+  align-items: flex-start; /* Alinea a la izquierda */
+  justify-content: flex-start; /* Mantiene el contenido en la parte superior */
+  margin-top: -116px; /* Ajusta para moverlo arriba o abajo */
+  margin-left: 110px; /* Aumenta este valor para moverlo más a la izquierda */
+  overflow: visible !important;
+  min-height: 290px;
 }
 
-
-#titulo_inicial{
-margin-top: 100px; /* Ajusta para moverlo arriba o abajo */
-text-align: center;
-
+#titulo_inicial {
+  margin-top: 100px; /* Ajusta para moverlo arriba o abajo */
+  text-align: center;
 }
 
-#titulo1{
-margin-top: 100px; /* Ajusta para moverlo arriba o abajo */
-text-align: center;
-margin-right:70%; /* Aumenta este valor para moverlo más a la izquierda */
-
+#titulo1 {
+  margin-top: 100px; /* Ajusta para moverlo arriba o abajo */
+  text-align: center;
+  margin-right: 70%; /* Aumenta este valor para moverlo más a la izquierda */
 }
 
-#titulo2{
-margin-top: 20px; /* Ajusta para moverlo arriba o abajo */
-text-align: center;
-margin-bottom: 20px;
-margin-right:70%; /* Aumenta este valor para moverlo más a la izquierda */
-
+#titulo2 {
+  margin-top: 20px; /* Ajusta para moverlo arriba o abajo */
+  text-align: center;
+  margin-bottom: 20px;
+  margin-right: 70%; /* Aumenta este valor para moverlo más a la izquierda */
 }
 
-
-#titulo3{
-margin-top: 20px;
-margin-bottom: 20px;
-text-align: center;
-margin-right:70%; /* Aumenta este valor para moverlo más a la izquierda */
-
+#titulo3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  margin-right: 70%; /* Aumenta este valor para moverlo más a la izquierda */
 }
 
 #select-jugador {
-
-direction: ltr;
-min-height: 40px;
+  direction: ltr;
+  min-height: 40px;
   height: auto;
 }
 
-
 /* Estilos generales para los select */
 select {
-width: 100%;
-max-width: 300px; /* Ajusta el ancho máximo */
-padding: 10px;
-font-size: 16px;
-border: 2px solid #ffbc00; /* Borde con el color predominante */
-border-radius: 5px;
-background-color: #1f1f1f; /* Fondo oscuro */
-color: #fff; /* Texto blanco */
-appearance: none; /* Elimina el estilo por defecto del navegador */
-cursor: pointer;
-transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px; /* Ajusta el ancho máximo */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ffbc00; /* Borde con el color predominante */
+  border-radius: 5px;
+  background-color: #1f1f1f; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  appearance: none; /* Elimina el estilo por defecto del navegador */
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 /* Cuando el select está enfocado */
 select:focus {
-outline: none;
-border-color: #ffa500; /* Color un poco más fuerte al enfocar */
-box-shadow: 0 0 8px rgba(255, 188, 0, 0.8);
+  outline: none;
+  border-color: #ffa500; /* Color un poco más fuerte al enfocar */
+  box-shadow: 0 0 8px rgba(255, 188, 0, 0.8);
 }
 
 /* Opciones dentro del select */
 select option {
-background-color: #1f1f1f; /* Fondo oscuro */
-color: #fff; /* Texto blanco */
+  background-color: #1f1f1f; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
 }
 
 /* Estilos para los títulos */
 h2 {
-font-size: 18px;
-color: #ffbc00;
+  font-size: 18px;
+  color: #ffbc00;
 
-text-align: center;
+  text-align: center;
 }
 
 /* Centrar los selects */
 #select-competicion,
 #select-equipo,
 #select-jugador {
-display: block;
-
+  display: block;
 }
 
 /* Efecto hover */
 select:hover {
-background-color: #292929;
+  background-color: #292929;
+}
+
+#contenedor-plantilla {
+  position: absolute;
+  margin-left: 60px;
+  top: 305px; /* Ajusta según la altura de los otros elementos */
+  left: 0px; /* Ajusta según el diseño */
+}
+
+#tabla-plantilla {
+  width: 100%;
+  max-width: 500px;
+  border-collapse: collapse;
+  background-color: #111; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#tabla-plantilla th,
+#tabla-plantilla td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ffa500;
+}
+
+#tabla-plantilla tr {
+  transition: all 0.3s ease-in-out;
+}
+
+#tabla-plantilla tr:not(:first-child):hover {
+  background-color: #ffa500; /* Dorado */
+  color: white;
+  box-shadow: 0px 0px 15px rgba(255, 165, 0, 0.6); /* Sutil iluminación */
+  transform: scale(1.02); /* Aumento ligero de tamaño */
+  cursor: pointer;
+}
+
+/* Asegurar que el texto dentro de las celdas cambia de color */
+#tabla-plantilla tr:not(:first-child):hover td {
+  color: white;
+}
+
+#tabla-plantilla th {
+  background-color: #222; /* Gris oscuro */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#tabla-plantilla tr:last-child td {
+  border-bottom: none;
+}
+
+/* Eliminar el fondo negro en las celdas para evitar conflictos con el hover */
+#tabla-plantilla td {
+  color: white;
+}
+
+#contenedor-last-partidos {
+  position: absolute;
+  top: 16vh;
+  left: 55%;
+  width: 80vw;
+  max-width: 600px;
+  min-width: 300px;
+  height: 15vw;
+  max-height: 50vh;
+  overflow: auto;
+  border: 2px solid blue;
+}
+
+@media (max-width: 768px) {
+  #contenedor-last-partidos {
+    width: 90vw;
+    left: 2%;
+    top: 5vh;
+  }
+}
+
+
+
+#contenedor-proximos-partidos {
+  position: absolute;
+  top: 62vh;
+  left: 50%;
+ 
+  
+  width: 100vw; 
+  max-width: 900px; /* Un poco más ancho */
+  height: 220px; /* Más espacio */
+  
+  
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  overflow-x: auto !important;
+  overflow-y: hidden; 
+  white-space: nowrap;
+  
+  padding: 15px; /* Más espacio interno */
+  scroll-snap-type: x mandatory;
+}
+
+/* 🔥 Tarjetas de partidos */
+.partido-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  min-width: 260px; /* Ancho un poco mayor */
+  max-width: 320px;
+  height: 190px; /* Más altura */
+  
+  background: rgba(255, 215, 0, 0.1); /* Dorado sutil */
+  border: 2px solid gold;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  scroll-snap-align: center;
+  
+  box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.5); /* Sombra dorada */
+  margin-right: 15px; /* Espacio entre tarjetas */
+}
+
+/* 🔥 Equipos */
+.equipo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.escudo {
+  width: 60px; /* Un poco más grande */
+  height: 60px;
+}
+
+.nombre-equipo {
+  font-size: 15px;
+  color: gold;
+  font-weight: bold;
+}
+
+.info-partido {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-top: 5px;
+  
+  width: 90%;
+  word-wrap: break-word; /* Permite que se parta en varias líneas */
+  overflow-wrap: break-word;
+  white-space: normal; /* Permite saltos de línea */
+}
+
+#contenedor-last-partidos {
+  position: absolute;
+  top: 16vh;
+  left: 55%;
+   
+  
+  width: 100vw; 
+  max-width: 900px; /* Un poco más ancho */
+  height: 220px; /* Más espacio */
+  
+  
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  overflow-x: auto !important;
+  overflow-y: hidden; 
+  white-space: nowrap;
+  
+  padding: 15px; /* Más espacio interno */
+  scroll-snap-type: x mandatory;
 }

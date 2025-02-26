@@ -51,7 +51,7 @@ async function cargar_equipos(id_competicion) {
         let id_equipo = selectEquipos.value;
         console.log("ID del equipo seleccionado:", id_equipo);
         recuperar_jugadores(id_equipo);
-        ultimos_5_partidos(id_competicion, id_equipo);
+       
     });
 }
 
