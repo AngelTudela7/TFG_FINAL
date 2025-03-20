@@ -1,4 +1,4 @@
-
+// Lógica para el menú hamburguesa
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -59,7 +59,7 @@ async function cargar_equipos(id_competicion) {
 async function recuperar_jugadores(id_equipo) {
     const selectJugadores = document.getElementById("select-jugador");
 
-    
+    // 💡 Limpiar el select de jugadores completamente
     selectJugadores.innerHTML = "<option value='' disabled selected>Selecciona un jugador</option>";
 
     try {
@@ -80,11 +80,11 @@ async function recuperar_jugadores(id_equipo) {
             selectJugadores.innerHTML += `<option value="${jugador.id}">${jugador.name}</option>`;
         });
 
-       
+        // 💡 Solución: Clonamos el select y reemplazamos para eliminar eventos duplicados
         const newSelectJugadores = selectJugadores.cloneNode(true);
         selectJugadores.replaceWith(newSelectJugadores);
 
- 
+        // Agregar un único event listener limpio
         newSelectJugadores.addEventListener("change", function() {
             var id_jugador = this.value;
             console.log("ID del jugador seleccionado:", id_jugador);
@@ -127,7 +127,7 @@ async function recuperar_datos_jugador(id_jugador) {
 function mostrar_boton() {
     let contenedor_boton = document.getElementById("contenedor-boton");
     
-   
+    // Evitar duplicar el botón
     if (!document.getElementById("boton-mostrar")) {
         contenedor_boton.innerHTML = `<button id="boton-mostrar">Mostrar datos</button>`;
     }
@@ -141,7 +141,7 @@ function calcularEdad(fechaNac) {
 
     let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
 
-   
+    // Ajustar si el cumpleaños aún no ha pasado este año
     let mesActual = fechaActual.getMonth();
     let diaActual = fechaActual.getDate();
     let mesNacimiento = fechaNacimiento.getMonth();
@@ -158,9 +158,10 @@ function calcularEdad(fechaNac) {
 function mostrar_datos_jugador(nombre, nacionalidad, posicion, posicion2,dorsal,fechaNac) {
     let boton_mostrar = document.getElementById("boton-mostrar");
     let contenedor_datos_jugador = document.getElementById("contenedor-datos");
-    let edad = calcularEdad(fechaNac); 
+    let edad = calcularEdad(fechaNac); // Calculamos la edad
 
 
+    // Evitar acumulación de event listeners
     boton_mostrar.replaceWith(boton_mostrar.cloneNode(true));
     boton_mostrar = document.getElementById("boton-mostrar");
 
@@ -196,5 +197,5 @@ function mostrar_datos_jugador(nombre, nacionalidad, posicion, posicion2,dorsal,
 
 
 
-
+// Cargar las competiciones al iniciar
 cargar_competiciones();

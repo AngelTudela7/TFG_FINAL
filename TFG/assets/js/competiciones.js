@@ -1,13 +1,14 @@
+// // Lógica para el menú hamburguesa
+// const hamburgerMenu = document.getElementById('hamburger-menu');
+// const mobileMenu = document.getElementById('mobile-menu');
 
-const hamburgerMenu = document.getElementById('hamburger-menu');
-const mobileMenu = document.getElementById('mobile-menu');
+// hamburgerMenu.addEventListener('click', () => {
+//    hamburgerMenu.classList.toggle('active');
+//    mobileMenu.classList.toggle('active');
+// });
 
-hamburgerMenu.addEventListener('click', () => {
-   hamburgerMenu.classList.toggle('active');
-   mobileMenu.classList.toggle('active');
-});
-
-
+//----------------------------------------------------------
+// Cargar las competiciones en el menú
 async function foto_nombre_liga() {
    const div_competiciones = document.querySelector('.competitions');
    if (!div_competiciones) {
@@ -31,9 +32,10 @@ async function foto_nombre_liga() {
    });
 }
 
-
-let jornadaData = [];
-let jornadasVisibles = 4; 
+//----------------------------------------------------------
+// Función para cargar los resultados de una competición (partidos finalizados)
+let jornadaData = []; // Variable global para almacenar todas las jornadas
+let jornadasVisibles = 4; // Inicialmente solo mostraremos 4 jornadas
 
 async function cargar_resultados(id_competicion) {
     const url = `https://api.football-data.org/v4/competitions/${id_competicion}/matches?status=FINISHED&limit=50`;
@@ -51,29 +53,29 @@ async function cargar_resultados(id_competicion) {
     const partidosTerminados = dataPartidos.matches.filter(partido => partido.status === 'FINISHED');
 
     const resultadosContainer = document.getElementById('resultados');
-    resultadosContainer.innerHTML = '';
+    resultadosContainer.innerHTML = ''; // Limpiar resultados anteriores
 
-    let jornadas = {}; 
+    let jornadas = {}; // Agrupar partidos por jornada
     partidosTerminados.forEach(partido => {
         const jornada = partido.matchday;
         if (!jornadas[jornada]) jornadas[jornada] = [];
         jornadas[jornada].push(partido);
     });
 
-    jornadaData = Object.entries(jornadas); 
+    jornadaData = Object.entries(jornadas); // Convertimos las jornadas a un array de entradas
 
-    jornadasVisibles = 4; 
+    jornadasVisibles = 4; // Restablecemos a 4 jornadas al cambiar de competición
 
-    mostrarJornadas(jornadasVisibles); 
-    document.getElementById('boton-cargar').innerHTML = '';
+    mostrarJornadas(jornadasVisibles); // Mostrar las primeras 4 jornadas
+    document.getElementById('boton-cargar').innerHTML = ''; // Eliminar el botón al cambiar de competición
 
-    mostrarBotonCargar();
+    mostrarBotonCargar(); // Mostrar el botón "Cargar todos"
 }
 
-
+// Mostrar las jornadas según el número de jornadas visibles
 function mostrarJornadas(numJornadas) {
     const resultadosContainer = document.getElementById('resultados');
-    resultadosContainer.innerHTML = ''; 
+    resultadosContainer.innerHTML = ''; // Limpiar resultados anteriores
 
     let jornadaHTML = '';
     for (let i = 0; i < numJornadas && i < jornadaData.length; i++) {
@@ -103,7 +105,7 @@ function mostrarJornadas(numJornadas) {
     resultadosContainer.innerHTML = jornadaHTML;
 }
 
-
+// Mostrar el botón de cargar todos
 function mostrarBotonCargar() {
     const botonContainer = document.getElementById('boton-cargar');
     if (jornadaData.length > jornadasVisibles) {
@@ -112,17 +114,17 @@ function mostrarBotonCargar() {
     }
 }
 
-
+// Función para cargar todas las jornadas
 function cargarTodos() {
-    jornadasVisibles = jornadaData.length; 
-    mostrarJornadas(jornadasVisibles); 
-    document.getElementById('boton-cargar').innerHTML = ''; 
+    jornadasVisibles = jornadaData.length; // Mostrar todas las jornadas
+    mostrarJornadas(jornadasVisibles); // Volver a mostrar todas las jornadas
+    document.getElementById('boton-cargar').innerHTML = ''; // Eliminar el botón de cargar todos
 }
 
-
+// Mostrar las jornadas según el número de jornadas visibles
 function mostrarJornadas(numJornadas) {
     const resultadosContainer = document.getElementById('resultados');
-    resultadosContainer.innerHTML = '';
+    resultadosContainer.innerHTML = ''; // Limpiar resultados anteriores
 
     let jornadaHTML = '';
     for (let i = 0; i < numJornadas && i < jornadaData.length; i++) {
@@ -152,7 +154,7 @@ function mostrarJornadas(numJornadas) {
     resultadosContainer.innerHTML = jornadaHTML;
 }
 
-
+// Mostrar el botón de cargar todos
 function mostrarBotonCargar() {
     const botonContainer = document.getElementById('boton-cargar');
     if (jornadaData.length > jornadasVisibles) {
@@ -161,17 +163,17 @@ function mostrarBotonCargar() {
     }
 }
 
-
+// Función para cargar todas las jornadas
 function cargarTodos() {
-    jornadasVisibles = jornadaData.length; 
-    mostrarJornadas(jornadasVisibles); 
-    document.getElementById('boton-cargar').innerHTML = ''; 
+    jornadasVisibles = jornadaData.length; // Mostrar todas las jornadas
+    mostrarJornadas(jornadasVisibles); // Volver a mostrar todas las jornadas
+    document.getElementById('boton-cargar').innerHTML = ''; // Eliminar el botón de cargar todos
 }
 
 
 
 
-
+// Función para cargar todas las jornadas de la competición
 async function cargar_partidos(id_competicion) {
    try {
       const url = `https://api.football-data.org/v4/competitions/${id_competicion}/matches`;
@@ -181,7 +183,7 @@ async function cargar_partidos(id_competicion) {
       });
       let dataPartidos = await response.json();
 
-      
+      // Agrupar los partidos por jornada (matchday)
       const partidosPorJornada = {};
       dataPartidos.matches.forEach(partido => {
          const jornada = partido.matchday;
@@ -192,11 +194,11 @@ async function cargar_partidos(id_competicion) {
       });
 
       const partidosContainer = document.getElementById('partidos');
-      partidosContainer.innerHTML = ''; 
+      partidosContainer.innerHTML = ''; // Limpiar contenido anterior
 
-      
+      // Generar el HTML para cada jornada
       for (const jornada in partidosPorJornada) {
-         let jornadaHTML = `<h3>Jornada ${jornada}:</h3><div class="jornada">`;
+         let jornadaHTML = `<h3>Jornada ${jornada}:</h3><div class="jornada">`; // Contenedor para los partidos de esta jornada
          partidosPorJornada[jornada].forEach(partido => {
             jornadaHTML += `
    <div class="jornada">
@@ -219,8 +221,8 @@ async function cargar_partidos(id_competicion) {
    </div>
 `;
          });
-         jornadaHTML += `</div>`; 
-         partidosContainer.innerHTML += jornadaHTML; 
+         jornadaHTML += `</div>`; // Cerrar el contenedor de la jornada
+         partidosContainer.innerHTML += jornadaHTML; // Añadir al contenedor principal
       }
    } catch (error) {
       console.error("Error al cargar los partidos:", error);
@@ -229,7 +231,9 @@ async function cargar_partidos(id_competicion) {
    }
 }
 
-
+//----------------------------------------------------------
+// Función para cargar la clasificación de la competición
+// Función para cargar la clasificación de la competición
 async function cargar_clasificacion(id_competicion) {
    try {
       const url = `https://api.football-data.org/v4/competitions/${id_competicion}/standings`;
@@ -245,9 +249,9 @@ async function cargar_clasificacion(id_competicion) {
 
       const dataClasificacion = await response.json();
       const clasificacionContainer = document.getElementById('clasificacion');
-      clasificacionContainer.innerHTML = ''; 
+      clasificacionContainer.innerHTML = ''; // Limpiar contenido anterior
 
-      
+      // Crear una tabla para mostrar los datos
       let tablaHTML = `
          <table class="clasificacion-tabla">
             <thead>
@@ -265,7 +269,7 @@ async function cargar_clasificacion(id_competicion) {
             <tbody>
       `;
 
-     
+      // Recorrer los standings (tabla de clasificación)
       dataClasificacion.standings.forEach(group => {
          group.table.forEach(team => {
             tablaHTML += `
@@ -286,13 +290,13 @@ async function cargar_clasificacion(id_competicion) {
          });
       });
 
-      
+      // Cerrar la tabla
       tablaHTML += `
             </tbody>
          </table>
       `;
 
-     
+      // Insertar la tabla en el contenedor
       clasificacionContainer.innerHTML = tablaHTML;
    } catch (error) {
       console.error("Error al cargar la clasificación:", error);
@@ -317,9 +321,9 @@ async function cargar_goleadores(id_competicion) {
 
       const dataGoleadores = await response.json();
       const goleadoresContainer = document.getElementById('goleadores');
-      goleadoresContainer.innerHTML = ''; 
+      goleadoresContainer.innerHTML = ''; // Limpiar contenido anterior
 
-     
+      // Crear una tabla para mostrar los datos
       let tablaHTML = `
          <table class="goleadores-tabla">
             <thead>
@@ -334,7 +338,7 @@ async function cargar_goleadores(id_competicion) {
             <tbody>
       `;
 
-     
+      // Recorrer los goleadores y agregar filas a la tabla
       dataGoleadores.scorers.forEach((jugador, index) => {
          tablaHTML += `
             <tr>
@@ -350,12 +354,13 @@ async function cargar_goleadores(id_competicion) {
          `;
       });
 
+      // Cerrar la tabla
       tablaHTML += `
             </tbody>
          </table>
       `;
 
-     
+      // Insertar la tabla en el contenedor
       goleadoresContainer.innerHTML = tablaHTML;
    } catch (error) {
       console.error("Error al cargar los goleadores:", error);
@@ -367,8 +372,8 @@ async function cargar_goleadores(id_competicion) {
 
 
 
-
-
+//----------------------------------------------------------
+// Función para manejar el clic en las competiciones y cargar los datos correspondientes
 function configurarClickCompetitions() {
    const container = document.querySelector('.competitions');
    if (!container) {
@@ -380,15 +385,15 @@ function configurarClickCompetitions() {
       if (event.target.closest('.competition')) {
          let id_competicion_clicada = event.target.closest('.competition').getAttribute('id_competi');
         
-         cargar_resultados(id_competicion_clicada);  
-         cargar_clasificacion(id_competicion_clicada); 
+         cargar_resultados(id_competicion_clicada);  // Cargar resultados
+         cargar_clasificacion(id_competicion_clicada); // Cargar clasificación
          cargar_goleadores(id_competicion_clicada)
       }
    });
 }
 
 //----------------------------------------------------------
-
+// Función para manejar la navegación entre las pestañas
 function configurarNavegacionTabs() {
 
   
@@ -432,9 +437,9 @@ function configurarNavegacionTabs() {
 }
 
 //----------------------------------------------------------
-
+// Esperar a que el DOM esté cargado para ejecutar el código
 document.addEventListener("DOMContentLoaded", async function () {
    await foto_nombre_liga();
    await configurarClickCompetitions();
-   await configurarNavegacionTabs(); 
+   await configurarNavegacionTabs();  // Configuración de las pestañas para cambiar de sección
 });

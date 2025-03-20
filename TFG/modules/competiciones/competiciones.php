@@ -18,13 +18,14 @@ include('includes/database.php');
 
 <body>
 
+  Menú hamburguesa
   <div class="hamburger-menu" id="hamburger-menu">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-
+  <!-- Menú de navegación (oculto por defecto) -->
   <nav id="mobile-menu">
     <ul>
       <li><a href="jugadores.php">Jugadores</a></li>
@@ -36,7 +37,7 @@ include('includes/database.php');
     </ul>
   </nav>
 
-
+  <!-- Barra de navegación normal (desktop) -->
   <header class="navbar">
     <div class="navbar-content">
       <a href="../../index.php" class="logo">Fortune Football</a>
