@@ -5,7 +5,7 @@ include('includes/database.php');
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -56,12 +56,6 @@ include('includes/database.php');
   <div class="competitions">
 
     <h3>COMPETICIONES POPULARES</h3>
-
-
-
-
-
-
 
   </div>
 

@@ -19,10 +19,42 @@ CREATE TABLE Noticias (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     contenido TEXT NOT NULL,
-    autor_id INT,  -- El usuario que crea la noticia (relación con Usuarios)
+    autor_id INT  NOT NULL,
     fecha_publicacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    imagen VARCHAR(255) NOT NULL,
+    prioridad VARCHAR (255) NOT NULL,
+    descripcion_corta VARCHAR(255) NOT NULL,
     FOREIGN KEY (autor_id) REFERENCES Usuarios(id)
 );
+
+
+
+CREATE TABLE Tickets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descripcion TEXT NOT NULL,
+    usuario_id INT NOT NULL,  -- Usuario que crea el ticket
+    estado ENUM('Abierto', 'En Proceso', 'Resuelto', 'Cerrado') DEFAULT 'Abierto',
+    prioridad ENUM('Baja', 'Media', 'Alta', 'Crítica') DEFAULT 'Media',
+    desarrollador_id INT NULL,  -- Se asigna al desarrollador cuando se trabaja en el ticket
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(id),
+    FOREIGN KEY (desarrollador_id) REFERENCES Usuarios(id)
+);
+
+
+
+CREATE TABLE Comentarios_Tickets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ticket_id INT NOT NULL,
+    usuario_id INT NOT NULL,
+    comentario TEXT NOT NULL,
+    fecha_comentario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ticket_id) REFERENCES Tickets(id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(id) ON DELETE CASCADE
+);
+
 
 
 CREATE TABLE Permisos (

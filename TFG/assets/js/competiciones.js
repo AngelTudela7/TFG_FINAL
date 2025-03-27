@@ -1,11 +1,11 @@
-// // Lógica para el menú hamburguesa
-// const hamburgerMenu = document.getElementById('hamburger-menu');
-// const mobileMenu = document.getElementById('mobile-menu');
+// Lógica para el menú hamburguesa
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const mobileMenu = document.getElementById('mobile-menu');
 
-// hamburgerMenu.addEventListener('click', () => {
-//    hamburgerMenu.classList.toggle('active');
-//    mobileMenu.classList.toggle('active');
-// });
+hamburgerMenu.addEventListener('click', () => {
+   hamburgerMenu.classList.toggle('active');
+   mobileMenu.classList.toggle('active');
+});
 
 //----------------------------------------------------------
 // Cargar las competiciones en el menú
