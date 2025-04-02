@@ -39,70 +39,66 @@ include('includes/permisos.php');
         </div>
     </nav>
 
-  	
-  		
-<?php 
+    <?php
 $cnx = conectar();
-$consulta = "SELECT * FROM Noticias WHERE id='".$_GET['id']."'";
+$consulta = "SELECT n.*, u.nombre AS autor_nombre FROM Noticias n INNER JOIN Usuarios u ON n.autor_id = u.id WHERE n.id='" . $_GET['id'] . "'";
 $resultado = mysqli_query($cnx, $consulta) or die(mysqli_error($cnx));
 
-
 if (mysqli_num_rows($resultado) > 0) {
-	$fila = mysqli_fetch_array($resultado);
-	?>
+    $fila = mysqli_fetch_array($resultado);
+?>
 
-<table class="table table-bordered table-striped table-hover mt-4 shadow-sm">
-    <thead class="table-dark">
-        <tr>
-            <th colspan="2" class="text-center fs-4">Detalles de la Noticia</th>
-        </tr>
-    </thead>
-    <tbody class="bg-white">
-        <tr>
-            <th class="bg-light">Título</th>
-            <td><?php echo $fila['titulo']; ?></td>
-        </tr>
-        <tr>
-            <th class="bg-light">Contenido</th>
-            <td><?php echo $fila['contenido']; ?></td>
-        </tr>
-        <tr>
-            <th class="bg-light">Imagen</th>
-            <td>
-                <img src="<?php echo $fila['imagen']; ?>" alt="Imagen de la Noticia" class="img-thumbnail" style="max-width: 200px;">
-            </td>
-        </tr>
-        <tr>
-            <th class="bg-light">Prioridad</th>
-            <td>
-                <span class="badge bg-<?php echo ($fila['prioridad'] == 'Alta') ? 'danger' : 'secondary'; ?>">
-                    <?php echo $fila['prioridad']; ?>
-                </span>
-            </td>
-        </tr>
-        <tr>
-            <th class="bg-light">Fecha de Publicación</th>
-            <td><?php echo date("d/m/Y", strtotime($fila['fecha_publicacion'])); ?></td>
-        </tr>
-        <tr>
-            <th class="bg-light">Publicada Por</th>
-            <td><?php echo $fila['autor_id']; ?></td>
-        </tr>
-    </tbody>
-</table>
+<div class="container d-flex justify-content-center mt-4">
+    <div class="table-responsive" style="max-width: 90%;">
+        <table class="table table-bordered table-striped table-hover shadow-sm w-100">
+            <thead class="table-dark">
+                <tr>
+                    <th colspan="2" class="text-center fs-4">Detalles de la Noticia</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                <tr>
+                    <th class="bg-light">Título</th>
+                    <td><?php echo htmlspecialchars($fila['titulo']); ?></td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Contenido</th>
+                    <td><?php echo nl2br(htmlspecialchars($fila['contenido'])); ?></td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Imagen</th>
+                    <td>
+                        <img src="<?php echo htmlspecialchars($fila['imagen']); ?>" alt="Imagen de la Noticia" class="img-thumbnail" style="max-width: 30%; height: auto; max-height: 400px;">
+                    </td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Prioridad</th>
+                    <td>
+                        <span class="badge bg-<?php echo ($fila['prioridad'] == 'Alta') ? 'danger' : 'secondary'; ?>">
+                            <?php echo htmlspecialchars($fila['prioridad']); ?>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Fecha de Publicación</th>
+                    <td><?php echo date("d/m/Y", strtotime($fila['fecha_publicacion'])); ?></td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Publicado Por</th>
+                    <td><?php echo htmlspecialchars($fila['autor_nombre']); ?></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-
-
-
-
-<?php 
+<?php
 } else {
- echo "Error recuperando los datos";
+    echo "Error recuperando los datos";
 }
 ?>
 
-
-<div class="text-center mt-3">
+<div class="text-center mt-1">
     <a href="herramientas_admin.php" class="btn btn-primary">
         <i class="bi bi-arrow-left"></i> Volver al listado
     </a>

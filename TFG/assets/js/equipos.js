@@ -1,17 +1,13 @@
-const hamburgerMenu = document.getElementById('hamburger-menu');
-const mobileMenu = document.getElementById('mobile-menu');
-
-hamburgerMenu.addEventListener('click', () => {
-    hamburgerMenu.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-});
-
+// Recuperar elementos del DOM
+const selectCompeticion = document.getElementById("select-competicion");
+const selectEquipo = document.getElementById("select-equipo");
 
 async function cargar_competiciones() {
-    const selectCompeticiones = document.getElementById("select-competicion");
 
-    selectCompeticiones.innerHTML = `<option value="" disabled selected>Selecciona una competición</option>`;
-
+    // Manipular el DOM
+    selectCompeticion.innerHTML = `<option value="" disabled selected>Selecciona una competición</option>`;
+    
+    // Petición a la API
     let response = await fetch("https://api.football-data.org/v4/competitions?limit=20", {
         method: "GET",
         headers: { "X-Auth-Token": "05a381fe6cfc42949e6c52abd91774c0" }
@@ -19,23 +15,30 @@ async function cargar_competiciones() {
 
     let data = await response.json();
 
+    // Manipular el DOM
     data.competitions.forEach(competition => {
-        selectCompeticiones.innerHTML += `<option value="${competition.id}">${competition.name}</option>`;
+        selectCompeticion.innerHTML += `<option value="${competition.id}">${competition.name}</option>`;
     });
 
-    selectCompeticiones.addEventListener("change", function () {
-        let id_competicion = selectCompeticiones.value;
-        console.log("ID de la competición seleccionada:", id_competicion);
-        cargar_equipos(id_competicion);
-    });
+    //Gestionar los eventos en el elemento <select> para evitar que se acumulen múltiples eventListener cad vez que se ejecuta la función
+    selectCompeticion.removeEventListener("change", configurarCambioCompeti);
+    selectCompeticion.addEventListener("change", configurarCambioCompeti);
 }
 
+// Función para manejar el cambio de competición en el select
+function configurarCambioCompeti() {
+    // Cada vez que se cambia de competición en el select, se recoge la nueva id y se ejecuta la función para recuperar sus datos
+    let id_competicion = selectCompeticion.value;
+    cargar_equipos(id_competicion);
+}
 
+// Función para recuperar los equipos de cada competición y mostrarlos en el elemento "<select>"
 async function cargar_equipos(id_competicion) {
-    const selectEquipos = document.getElementById("select-equipo");
 
-    selectEquipos.innerHTML = "<option value='' disabled selected>Selecciona un equipo</option>";
+    // Manipular el DOM
+    selectEquipo.innerHTML = "<option value='' disabled selected>Selecciona un equipo</option>";
 
+    // Petición a la API 
     let response = await fetch(`https://api.football-data.org/v4/competitions/${id_competicion}/teams`, {
         method: "GET",
         headers: { "X-Auth-Token": "05a381fe6cfc42949e6c52abd91774c0" }
@@ -43,181 +46,160 @@ async function cargar_equipos(id_competicion) {
 
     let data = await response.json();
 
+    // Manipular el DOM
     data.teams.forEach(equipo => {
-        selectEquipos.innerHTML += `<option value="${equipo.id}">${equipo.name}</option>`;
+        selectEquipo.innerHTML += `<option value="${equipo.id}">${equipo.name}</option>`;
     });
 
-    // Limpiar y agregar nuevo event listener
-    selectEquipos.onchange = async function () {
-        let id_equipo = selectEquipos.value;
-        console.log("ID del equipo seleccionado:", id_equipo);
-
-        let jugadores = await recuperar_jugadores(id_equipo);  // 🔹 Obtener plantilla de jugadores
-        mostrar_plantilla(jugadores);  // 🔹 Mostrar en tabla
-
-        ultimos_5_partidos(id_competicion, id_equipo);
-        proximos_partidos_equipo(id_equipo);
-    };
+    //Gestionar los eventos en el elemento <select> para evitar que se acumulen múltiples eventListener cad vez que se ejecuta la función
+    selectEquipo.removeEventListener("change", configurarCambioEquipo);
+    selectEquipo.addEventListener("change", configurarCambioEquipo);
 }
 
+// Función para manejar el cambio de equipo en el select
+function configurarCambioEquipo() {
+    // Cada vez que se cambia de equipo en el select, se recoge la nueva id y también la de la competición,después se ejecuta la función para recuperar sus datos
+    let id_equipo = selectEquipo.value;
+    let id_competicion = selectCompeticion.value;
+    cargar_datos_equipo(id_equipo, id_competicion);
+}
 
+// Función para cargar los datos de un equipo
+async function cargar_datos_equipo(id_equipo, id_competicion) {
+    // Cargar funciones 
+    let jugadores = await recuperar_jugadores(id_equipo);
+    mostrar_plantilla(jugadores);
+    ultimos_5_partidos(id_competicion, id_equipo);
+    proximos_partidos_equipo(id_equipo);
+  
+    // Mostrar las secciones de partidos
+    document.getElementById("contenedor-last-partidos").style.display = "block";
+    document.getElementById("contenedor-proximos-partidos").style.display = "block";
+}
+
+// Recuperar los jugadores de un equipo y mostrar la plantilla 
 async function recuperar_jugadores(id_equipo) {
-
     try {
+       
+        // Consulta a la API
         let response = await fetch(`https://api.football-data.org/v4/teams/${id_equipo}`, {
             method: "GET",
             headers: { "X-Auth-Token": "05a381fe6cfc42949e6c52abd91774c0" }
         });
-
         let data = await response.json();
-
-
-        if (!data.squad || data.squad.length === 0) {
-            console.warn("Este equipo no tiene jugadores disponibles.");
-            return [];
-        }
-
         return data.squad;
-
     } catch (error) {
         console.error("Error al recuperar jugadores:", error);
         return [];
     }
 }
 
-
+// Mostrar la plantilla del equipo
 function mostrar_plantilla(jugadores) {
-    let contenedor_plantilla = document.getElementById('contenedor-plantilla');
-
-    // Limpiar contenido anterior
-    contenedor_plantilla.innerHTML = "";
+    
+    // Manipular el DOM
+    let contenedor = document.getElementById("contenedor-plantilla");
+    contenedor.innerHTML = "<h3>Plantilla de Jugadores</h3>";
 
     if (jugadores.length === 0) {
-        contenedor_plantilla.innerHTML = "<p>No hay jugadores disponibles.</p>";
+        contenedor.innerHTML += "<p>No hay jugadores disponibles.</p>";
         return;
     }
 
-    // Crear el contenedor general
-    let plantillaHTML = `<div style="width: fit-content; margin-left: 50px;">`;
-
-    // Agregar título "Plantilla"
-    plantillaHTML += `<h1 id="titulo-plantilla" style="color: #FFA500; font-size: 22px; font-weight: bold; margin-bottom: 15px; text-align: left;">
-                        Plantilla
-                      </h1>`;
-
-    // Contenedor de la tabla con scroll
-    plantillaHTML += `
-        <div style="max-height: 550px; overflow-y: auto; border: 2px solid #FFA500; border-radius: 8px;">
-            <table id="tabla-plantilla">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Nacionalidad</th>
-                    <th>Posición</th>
-                </tr>`;
-
+    let plantillaHTML = "<table class='table table-dark table-striped'>";
+    plantillaHTML += "<thead><tr><th>Nombre</th><th>Nacionalidad</th><th>Posición</th></tr></thead><tbody>";
+    
+    // Recorrer los jugadores e ir añadiendo sus datos a la tabla
     jugadores.forEach(jugador => {
-        plantillaHTML += `<tr>
-                            <td>${jugador.name}</td>
-                            <td>${jugador.nationality}</td>
-                            <td>${jugador.position}</td>
-                          </tr>`;
+        plantillaHTML += `<tr><td>${jugador.name}</td><td>${jugador.nationality}</td><td>${jugador.position}</td></tr>`;
     });
-
-    plantillaHTML += `</table></div></div>`;
-
-    // Insertar en el contenedor
-    contenedor_plantilla.innerHTML = plantillaHTML;
+    plantillaHTML += "</tbody></table>";
+    // Añadir tabla al DOM
+    contenedor.innerHTML += plantillaHTML;
 }
 
-
-
-
+// Función para mostrar los últimos 5 partidos que ha jugado el equipo seleccionado
 async function ultimos_5_partidos(id_competicion, id_equipo) {
-
-    let contenedor = document.getElementById('contenedor-last-partidos')
-
-    if (!id_equipo || !id_competicion) {
-        console.warn("No hay datos suficientes para obtener los partidos.");
-        return;
-    }
+    let contenedor = document.getElementById("ultimo-partido");
+    contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar partidos de otro equipo
 
     try {
+        // Consulta a la API
         let response = await fetch(`https://api.football-data.org/v4/teams/${id_equipo}/matches?status=FINISHED&competitions=${id_competicion}&limit=5`, {
             method: "GET",
             headers: { "X-Auth-Token": "05a381fe6cfc42949e6c52abd91774c0" }
         });
-
         let data = await response.json();
-        console.log("Últimos 5 partidos:");
 
+        // Ordenar partidos de más reciente a más antiguo con la función sort y convirtiendo las fechas para poder compararlas
+        data.matches.sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
+
+        // Añadir contenido al DOM
         data.matches.forEach(partido => {
-            console.log(`Fecha: ${partido.utcDate} 
-            Jornada: ${partido.matchday}, 
-            ${partido.homeTeam.name} ${partido.score.fullTime.home}-${partido.score.fullTime.away} ${partido.awayTeam.name} 
-            Colegiado de campo: ${partido.referees[0].name}
-            `)
-            contenedor.innerHTML += `<p> ${partido.homeTeam.name} ${partido.score.fullTime.home}-${partido.score.fullTime.away} ${partido.awayTeam.name}</p> `
+            contenedor.innerHTML += `
+            <div class="card-partido">
+                <div class="card-header">
+                    <div class="equipo-local">
+                        <img src="https://crests.football-data.org/${partido.homeTeam.id}.png" alt="${partido.homeTeam.name}">
+                        <span class="equipo-nombre">${partido.homeTeam.name}</span>
+                    </div>
+                    <span class="resultado">${partido.score.fullTime.home}-${partido.score.fullTime.away}</span>
+                    <div class="equipo-visitante">
+                        <img src="https://crests.football-data.org/${partido.awayTeam.id}.png" alt="${partido.awayTeam.name}">
+                        <span class="equipo-nombre">${partido.awayTeam.name}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="fecha">${new Date(partido.utcDate).toLocaleString()}</div>
+                    <div class="competicion">${partido.competition.name}</div>
+                </div>
+            </div>
+            `;
         });
-
     } catch (error) {
-        console.error("Error al recuperar partidos:", error);
+        console.error("Error al obtener partidos:", error);
     }
 }
 
 
-
+// Función para mostrar los próximos 5 partidos de un equipo 
 async function proximos_partidos_equipo(id_equipo) {
-    let contenedor = document.getElementById('contenedor-proximos-partidos');
-    contenedor.innerHTML = ""; // Limpia antes de añadir nuevos partidos
+    let contenedor = document.getElementById("proximos-partidos");
+    contenedor.innerHTML = ""; // Limpiar el contenedor 
 
+    // Petición a la API
     try {
-        let response = await fetch(`https://api.football-data.org/v4/teams/${id_equipo}/matches?status=SCHEDULED&limit=10`, {
+        let response = await fetch(`https://api.football-data.org/v4/teams/${id_equipo}/matches?status=SCHEDULED&limit=5`, {
             method: "GET",
             headers: { "X-Auth-Token": "05a381fe6cfc42949e6c52abd91774c0" }
         });
-
         let data = await response.json();
-        console.log('Próximos 10 partidos:', data);
 
-
-        contenedor.style.backgroundColor = "black";
-        contenedor.style.border = "2px solid gold";
-        contenedor.style.borderRadius = "10px";
-
-        contenedor.innerHTML += `<h3 style="text-align:center">Próximos partidos del equipo </h3>`
+        // Añadir datos al DOM
         data.matches.forEach(partido => {
-            let card = document.createElement("div");
-            card.classList.add("partido-card");
-
-            card.innerHTML = `
-                <div class="equipo equipo-local">
-                    <img src="https://crests.football-data.org/${partido.homeTeam.id}.png" alt="${partido.homeTeam.name}" class="escudo">
-                    <span class="nombre-equipo">${partido.homeTeam.name}</span>
+            contenedor.innerHTML += `
+            <div class="card-partido">
+                <div class="card-header">
+                    <div class="equipo-local">
+                        <img src="https://crests.football-data.org/${partido.homeTeam.id}.png" alt="${partido.homeTeam.name}">
+                        <span class="equipo-nombre">${partido.homeTeam.name}</span>
+                    </div>
+                    <div class="fecha">${new Date(partido.utcDate).toLocaleString()}</div>
+                    <div class="equipo-visitante">
+                        <img src="https://crests.football-data.org/${partido.awayTeam.id}.png" alt="${partido.awayTeam.name}">
+                        <span class="equipo-nombre">${partido.awayTeam.name}</span>
+                    </div>
                 </div>
-                <div class="info-partido">
-                    <span class="fecha">${new Date(partido.utcDate).toLocaleString()}</span>
-                    
-                    <span class="competicion">${partido.competition.name}</span>
+                <div class="card-body">
+                    <div class="competicion">${partido.competition.name}</div>
                 </div>
-                <div class="equipo equipo-visitante">
-                    <img src="https://crests.football-data.org/${partido.awayTeam.id}.png" alt="${partido.awayTeam.name}" class="escudo">
-                    <span class="nombre-equipo">${partido.awayTeam.name}</span>
-                </div>
+            </div>
             `;
-
-            contenedor.appendChild(card);
         });
-
     } catch (error) {
-        console.error("Error al recuperar partidos:", error);
+        console.error("Error al obtener partidos:", error);
     }
 }
 
-
-
-
-
-
-
-cargar_competiciones()
-
+// Cargar la función al abrir la página
+cargar_competiciones();

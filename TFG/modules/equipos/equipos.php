@@ -3,85 +3,110 @@ include('includes/config.php');
 include('includes/database.php');
 ?>
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fortune Football</title>
-  <link rel="stylesheet" href="../../assets/css/equipos.css">
+
+  <!-- Enlace a Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Tourney:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/equipos.css">
   <script defer src="../../assets/js/equipos.js"></script>
 </head>
 
 <body>
 
-  <!-- Menú hamburguesa -->
-  <div class="hamburger-menu" id="hamburger-menu">
-    <span></span>
-    <span></span>
-    <span></span>
+  <!-- Barra de navegación de Bootstrap -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">Fortune Football</a>
+        
+        <!-- Botón del menú hamburguesa -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Contenido del menú -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Links de navegación -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../../modules/partidos/partidos.php">Partidos</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../index.php">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../modules/equipos/equipos.php">Equipos</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../modules/jugadores/jugadores.php">Jugadores</a></li>
+            </ul>
+
+            <!-- Sección de usuario -->
+            <ul class="navbar-nav ms-3">
+                <?php if (!isset($_SESSION['id']) || !$_SESSION['id']) { ?>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="login_comun.php">Iniciar Sesión</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <img src="assets/images/icono.png" alt="Usuario" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                            <?php echo htmlspecialchars($_SESSION['nombre']); ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="mi_perfil.php">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="soporte.php">Soporte</a></li>
+                            <li><a class="dropdown-item text-danger" href="logout_comun.php">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+  <div class="container my-3">
+    <h1 class="text-center mb-4">DATOS DE EQUIPOS</h1>
+
+    <div class="col-12 col-md-4 select-wrapper">
+    <h2 class="text-warning">Selecciona la competición</h2>
+    <select id="select-competicion" class="form-select mb-3">
+      <option value="" disabled selected>Selecciona una competición</option>
+    </select>
+</div>
+
+<div class="col-12 col-md-4 select-wrapper">
+    <h2 class="text-warning">Selecciona el equipo</h2>
+    <select id="select-equipo" class="form-select mb-3">
+      <option value="" disabled selected>Selecciona un equipo</option>
+    </select>
+</div>
+
+    <!-- Sección para mostrar la plantilla de jugadores, últimos y próximos partidos -->
+    <div class="row mt-5">
+      <!-- Plantilla de jugadores -->
+      <div class="col-12 col-md-4" id="contenedor-plantilla" style="max-height: 450px; overflow-y: auto;"></div>
+
+      <!-- Últimos 5 partidos -->
+      <div class="col-12 col-md-4 mt-3" id="contenedor-last-partidos" style="display: none;">
+        <h3 class="text-warning">Últimos 5 Partidos</h3>
+        <div id="ultimo-partido"></div>
+      </div>
+
+      <!-- Próximos 5 partidos -->
+      <div class="col-12 col-md-4 mt-3" id="contenedor-proximos-partidos" style="display: none;">
+        <h3 class="text-warning">Próximos 5 Partidos</h3>
+        <div id="proximos-partidos"></div>
+      </div>
+    </div>
   </div>
 
-  <!-- Menú de navegación (oculto por defecto) -->
-  <nav id="mobile-menu">
-    <ul>
-      <li><a href="jugadores.php">Jugadores</a></li>
-      <li><a href="../../modules/partidos/partidos.php">Partidos</a></li>
-      <li><a href="../../index.php">Noticias</a></li>
-      <li><a href="../../modules/jugadores/jugadores.php">Equipos</a></li>
-      <li><a href="../../modules/competiciones/competiciones.php">Competiciones</a></li>
-    </ul>
-
-
-  </nav>
-  <!-- Barra de navegación normal (desktop) -->
-  <header class="navbar">
-    <div class="navbar-content">
-      <a href="../../index.php" class="logo">Fortune Football</a>
-      <nav>
-        <ul>
-        <li><a href="../../modules/partidos/partidos.php">Partidos</a></li>
-      <li><a href="../../index.php">Noticias</a></li>
-      <li><a href="../../modules/jugadores/jugadores.php">Jugadores</a></li>
-      <li><a href="../../modules/competiciones/competiciones.php">Competiciones</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <h1 id="titulo_inicial">DATOS DE EQUIPOS</h1>
-
-  <div id="selectores">
-<h2 id="titulo1">Selecciona la competición</h2>
-<br>
-<select name="select-competicion" id="select-competicion">
-</select>
-
-<h2 id="titulo2">Selecciona el equipo</h2>
-
-<select name="select-equipo" id="select-equipo">
-</select>
-</div>
-
-
-<div id="contenedor-plantilla">
-</div>
-
-<div id="contenedor-last-partidos">
-<h1>5 últimos</h1>
-</div>
-
-<div id="contenedor-proximos-partidos">
- 
-</div>
-
-
-  <footer class="footer">
+  <footer class="footer bg-dark text-white text-center py-3">
     <p>&copy; 2024 Fortune Football. Todos los derechos reservados.</p>
   </footer>
 
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
-  </html>
+</html>

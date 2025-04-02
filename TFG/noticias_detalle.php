@@ -206,7 +206,25 @@ include('includes/database.php');
     text-decoration: underline;  /* Subrayar los enlaces al pasar el ratón */
 }
 
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+}
 
+/* Ajustes específicos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .content-container {
+    grid-template-columns: 1fr; /* Cambia a una sola columna en móvil */
+    text-align: center; /* Centra el texto */
+  }
+
+  img {
+    height: 300px; /* Ajusta la altura de la imagen en móvil */
+    object-fit: cover;
+  }
+}
 
   </style>
 </head>
@@ -300,18 +318,19 @@ include('includes/database.php');
 
 
 
-    <!-- Lista de Comentarios -->
-    <div class="comment-section">
-        <!-- Contenedor de comentarios con scroll -->
-        <div class="comentarios p-4 rounded bg-dark text-white" style="max-height: 400px; overflow-y: auto;">
-            <?php
-            // Consulta para obtener comentarios con los nombres de los autores
-            $consulta_comentarios = "SELECT Comentarios.*, Usuarios.nombre FROM Comentarios 
-                                     JOIN Usuarios ON Comentarios.autor_id = Usuarios.id 
-                                     WHERE Comentarios.noticia_id='" . $_GET['id'] . "'";
+<!-- Lista de Comentarios -->
+<div class="comment-section">
+    <!-- Contenedor de comentarios con scroll -->
+    <div class="comentarios p-4 rounded bg-dark text-white" style="max-height: 400px; overflow-y: auto;">
+        <?php
+        // Consulta para obtener comentarios con los nombres de los autores
+        $consulta_comentarios = "SELECT Comentarios.*, Usuarios.nombre FROM Comentarios 
+                                 JOIN Usuarios ON Comentarios.autor_id = Usuarios.id 
+                                 WHERE Comentarios.noticia_id='" . $_GET['id'] . "'";
 
-            $res = mysqli_query($cnx, $consulta_comentarios) or die(mysqli_error($cnx));
+        $res = mysqli_query($cnx, $consulta_comentarios) or die(mysqli_error($cnx));
 
+        if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
                 // Mostrar cada comentario
                 echo '<div class="comment-box mb-3 p-3 rounded shadow-sm bg-secondary">';
@@ -322,31 +341,39 @@ include('includes/database.php');
                 echo '    <p class="mb-0 text-justify texto-comentario">' . nl2br(htmlspecialchars($row['contenido'])) . '</p>';
                 echo '</div>';
             }
-            ?>
-        </div>
+        } else {
+            echo '<div class="text-center text-white p-4">📝 Aún no hay comentarios. ¡Sé el primero en comentar! 🎉</div>';
+        }
+        ?>
     </div>
 </div>
 
 <?php if (isset($_SESSION['id'])): ?>
-    
     <!-- Si el usuario está autenticado, mostrar el formulario para dejar un comentario -->
     <div class="container mt-4">
-    <div class="comment-form mx-auto" style="max-width: 600px; background-color: #2f2f2f; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
-        <h4 class="text-center mb-4 text-white">Deja tu comentario</h4>
-        <form action="procesar_comentario.php" method="post">
-            <div class="mb-3">
-                <textarea class="form-control" name="contenido" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
-            </div>
-            <input type="hidden" name="noticia_id" value="<?php echo $_GET['id']; ?>">
-            <button type="submit" class="btn btn-primary w-100 btn-lg">Publicar Comentario</button>
-        </form>
+        <div class="comment-form mx-auto" style="max-width: 600px; background-color: #2f2f2f; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+            <h4 class="text-center mb-4 text-white">Deja tu comentario</h4>
+            <form action="procesar_comentario.php" method="post">
+                <div class="mb-3">
+                    <textarea class="form-control" name="contenido" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea>
+                </div>
+                <input type="hidden" name="noticia_id" value="<?php echo $_GET['id']; ?>">
+                <button type="submit" class="btn btn-primary w-100 btn-lg">Publicar Comentario</button>
+            </form>
+        </div>
     </div>
-</div>
 <?php else: ?>
     <!-- Si el usuario no está autenticado, mostrar el mensaje de invitación -->
-    <div class="alert alert-info mt-4 text-center">
-        <p class="mb-0">¿Quieres dejar un comentario? <a href="login_comun.php" class="alert-link fw-bold">Inicia sesión</a> o <a href="registro.php" class="alert-link fw-bold">regístrate</a> para comentar.</p>
+    <div class="container mt-4">
+    <div class="alert alert-dark text-center p-4" style="border: 2px dashed #6c757d; border-radius: 10px; background: rgba(0, 0, 0, 0.8); color: white;">
+        <h5 class="fw-bold">🔒 ¿Quieres comentar?</h5>
+        <p class="mb-3">Para participar en la conversación, inicia sesión o regístrate.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-center">
+            <a href="login_comun.php" class="btn btn-primary">Iniciar sesión</a>
+            <a href="registro.php" class="btn btn-outline-light">Registrarse</a>
+        </div>
     </div>
+</div>
 <?php endif; ?>
 
 

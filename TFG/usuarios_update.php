@@ -70,7 +70,7 @@ include('includes/permisos.php');
     $fila = mysqli_fetch_array($resultado);	
    ?>
 
-   <<div class="container mt-5">
+   <div class="container mt-5">
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white text-center">
             <h4>Editar usuario</h4>

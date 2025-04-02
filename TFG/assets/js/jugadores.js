@@ -1,11 +1,4 @@
-// Lógica para el menú hamburguesa
-const hamburgerMenu = document.getElementById('hamburger-menu');
-const mobileMenu = document.getElementById('mobile-menu');
 
-hamburgerMenu.addEventListener('click', () => {
-   hamburgerMenu.classList.toggle('active');
-   mobileMenu.classList.toggle('active');
-});
 
 
 async function cargar_competiciones() {
@@ -129,7 +122,11 @@ function mostrar_boton() {
     
     // Evitar duplicar el botón
     if (!document.getElementById("boton-mostrar")) {
-        contenedor_boton.innerHTML = `<button id="boton-mostrar">Mostrar datos</button>`;
+        contenedor_boton.innerHTML = `
+        <div class="text-center">
+          <button class="btn btn-warning fw-bold" id="boton-mostrar">Buscar Jugador</button>
+        </div>
+      `;
     }
 }
 
@@ -155,45 +152,43 @@ function calcularEdad(fechaNac) {
 }
 
 
-function mostrar_datos_jugador(nombre, nacionalidad, posicion, posicion2,dorsal,fechaNac) {
+function mostrar_datos_jugador(nombre, nacionalidad, posicion, posicion2, dorsal, fechaNac) {
     let boton_mostrar = document.getElementById("boton-mostrar");
     let contenedor_datos_jugador = document.getElementById("contenedor-datos");
     let edad = calcularEdad(fechaNac); // Calculamos la edad
 
-
-    // Evitar acumulación de event listeners
-    boton_mostrar.replaceWith(boton_mostrar.cloneNode(true));
-    boton_mostrar = document.getElementById("boton-mostrar");
+   
 
     boton_mostrar.addEventListener("click", function () {
         contenedor_datos_jugador.innerHTML = `
-            <h1 class="titulo-datos">DATOS DEL FUTBOLISTA</h1>
-            <table class="tabla-datos">
-                <tr>
-                    <th>Nombre</th>
-                    <td>${nombre}</td>
-                </tr>
-                <tr>
-                    <th>Nacionalidad</th>
-                    <td>${nacionalidad}</td>
-                </tr>
-                <tr>
-                    <th>Posición</th>
-                    <td>${posicion} , ${posicion2}</td>
-                </tr>
-                <tr>
-                <th>Dorsal</th>
-                <td>${dorsal}</td>
-                </tr>
-                <tr>
-                <th>Edad</th>
-                <td>${fechaNac} , ${edad} años</td>
-                </tr>
-            </table>
+            <h1 class="titulo-datos text-center text-warning mb-4 mt-2">DATOS DEL FUTBOLISTA</h1>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-dark mx-auto">
+                    <tr>
+                        <th>Nombre</th>
+                        <td>${nombre}</td>
+                    </tr>
+                    <tr>
+                        <th>Nacionalidad</th>
+                        <td>${nacionalidad}</td>
+                    </tr>
+                    <tr>
+                        <th>Posición</th>
+                        <td>${posicion} , ${posicion2}</td>
+                    </tr>
+                    <tr>
+                        <th>Dorsal</th>
+                        <td>${dorsal}</td>
+                    </tr>
+                    <tr>
+                        <th>Edad</th>
+                        <td>${fechaNac} , ${edad} años</td>
+                    </tr>
+                </table>
+            </div>
         `;
     });
 }
-
 
 
 

@@ -41,3 +41,37 @@ Permisos
 Roles
 Comentarios
 Tickets !!!!!!!!!! CREAR TABLA 
+
+
+
+
+ASPECTOS PARA CONSIDERAR EN MEJORAR EN LA APP:
+
+
+Gestión noticias:
+
+        -Cambiar la tabla para que sea un poco más pequeña y bonita y que en "publicada por" ponga el nombre y no la id
+
+
+Gestión usuarios:
+
+        -Cambiar la consulta o las tablas porque posiblemente al haber referencias de usuarios en cosas como comentarios no deja borrarlos por ejemplo, mejor cambiar lo de la base de datos. FOREIGN KEY (autor_id) REFERENCES Usuarios(id) ON DELETE CASCADE
+        
+
+Insercion de usuarios y mayoría de inserciones: 
+
+    -NO mandar de vuelta al listado sino al formulario
+
+
+
+
+
+
+
+
+
+
+
+
+
+

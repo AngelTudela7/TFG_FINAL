@@ -221,7 +221,7 @@ if (!isset($_SESSION['id']) || !$_SESSION['id']) {
                             echo "</div>";
                         }
                     } else {
-                        echo "<p class='text-center text-muted'>Aún no hay comentarios en este ticket.</p>";
+                        echo "<p class='text-center ' stlye='color:white;'>Aún no hay comentarios en este ticket.</p>";
                     }
                     ?>
                 </div>

@@ -121,6 +121,7 @@ $consulta2 = "SELECT tickets.id, tickets.titulo, tickets.usuario_id , tickets.es
              FROM tickets
              JOIN usuarios ON tickets.usuario_id = usuarios.id
              WHERE tickets.desarrollador_id IS NULL
+             AND tickets.estado!= 'Cerrado'
              ORDER BY tickets.fecha_creacion DESC";
 
 $resultado2 = mysqli_query($cnx, $consulta2);
