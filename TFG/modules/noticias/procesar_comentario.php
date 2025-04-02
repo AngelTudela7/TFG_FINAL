@@ -1,7 +1,7 @@
 <?php
-include ('includes/database.php');
-error_reporting(E_ALL);  // Habilitar reporte de todos los errores
-ini_set('display_errors', 1);  // Mostrar errores en pantalla
+include('../../includes/database.php');
+
+
 session_start();
 
 if (isset($_POST['contenido']) && isset($_POST['noticia_id']) && isset($_SESSION['id'])) {

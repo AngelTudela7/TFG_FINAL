@@ -1,7 +1,7 @@
 <?php
 session_start();
-include('includes/config.php');
-include('includes/permisos.php');
+include('../../../includes/config.php');
+include('../../../includes/permisos.php');
 
 ?>
 
@@ -27,8 +27,8 @@ include('includes/permisos.php');
                 <ul class="navbar-nav ms-2 me-auto">
                     <li class="nav-item"><a class="nav-link" href="noticias_crear.php">Crear</a></li>
                     <li class="nav-item"><a class="nav-link" href="noticias_eliminar.php">Eliminar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="administracion_users.php">Usuarios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gestion_tickets.php">Gestión Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../usuarios/administracion_users.php">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../tickets/gestion_tickets.php">Gestión Tickets</a></li>
 
                 </ul>
             </div>
@@ -36,8 +36,8 @@ include('includes/permisos.php');
             <!-- Sección de usuario -->
             <div class="d-flex align-items-center gap-2 flex-wrap">
                 <span class="text-white fw-bold"> <?php echo $_SESSION['nombre']; ?> </span>
-                <img src="assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
-                <a href="logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
+                <img src="../../../assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
+                <a href="../../../autenticaciones/logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
             </div>
         </div>
     </nav>

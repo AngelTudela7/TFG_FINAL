@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include ('includes/config.php');
-include('includes/permisos.php');
+include ('../../../../includes/config.php');
+include('../../../includes/permisos.php');
  ?>
 
 <?php

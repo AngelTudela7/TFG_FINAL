@@ -1,7 +1,7 @@
 <?php
 session_start();
-include('includes/config.php');
-include('includes/database.php');
+include('../../../includes/config.php');
+include('../../../includes/database.php');
 
 
 
@@ -17,7 +17,7 @@ if (!isset($_SESSION['id']) || !$_SESSION['id']) {
 </head>
 <body class="d-flex flex-column align-items-center justify-content-center vh-100 bg-dark text-white">
     <h1 class="text-center text-danger mb-4">Debes iniciar sesión para abrir un ticket de soporte</h1>
-    <a class="btn btn-outline-light" href="login_comun.php">Iniciar Sesión</a>
+    <a class="btn btn-outline-light" href="../../../autenticaciones/login_comun.php">Iniciar Sesión</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>';
@@ -66,50 +66,50 @@ if (!isset($_SESSION['id']) || !$_SESSION['id']) {
 
 
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <!-- Logo -->
-                <a class="navbar-brand" href="#">Fortune Football</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        
+        <a class="navbar-brand" href="../../index.php">Fortune Football</a>
+        
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <!-- Botón del menú hamburguesa -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+       
+        <div class="collapse navbar-collapse" id="navbarNav">
+            
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../../../index.php">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../modules/competiciones/competiciones.php">Competiciones</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../modules/equipos/equipos.php">Equipos</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../modules/jugadores/jugadores.php">Jugadores</a></li>
+            </ul>
 
-                <!-- Contenido del menú -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <!-- Links de navegación -->
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Partidos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Noticias</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Equipos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Jugadores</a></li>
-                    </ul>
-
-                    <!-- Sección de usuario -->
-                    <ul class="navbar-nav ms-3">
-                        <?php if (!isset($_SESSION['id']) || !$_SESSION['id']) { ?>
-                            <li class="nav-item">
-                                <a class="btn btn-outline-light" href="login_comun.php">Iniciar Sesión</a>
-                            </li>
-                        <?php } else { ?>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                    <img src="assets/images/icono.png" alt="Usuario" class="rounded-circle me-2" style="width: 30px; height: 30px;">
-                                    <?php echo htmlspecialchars($_SESSION['nombre']); ?>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="mi_perfil.php">Mi perfil</a></li>
-                                    <li><a class="dropdown-item" href="soporte.php">Soporte</a></li>
-                                    <li><a class="dropdown-item text-danger" href="logout_comun.php">Cerrar sesión</a></li>
-                                </ul>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+            <!-- Sección de usuario, si no tiene sesión iniciada mostrar un botón para que inicie. Si ya lo está, mostrar su nombre y ofrecerle el botón para cerrarla -->
+            <ul class="navbar-nav ms-3">
+                <?php if (!isset($_SESSION['id']) || !$_SESSION['id']) { ?>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="../../autenticaciones/login_comun.php">Iniciar Sesión</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <img src="../../../assets/images/icono.png" alt="Usuario" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                            <?php echo htmlspecialchars($_SESSION['nombre']); ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="mi_perfil.php">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="soporte.php">Soporte</a></li>
+                            <li><a class="dropdown-item text-danger" href="../../autenticaciones/logout_comun.php">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+  </nav>
 
 
         <?php
@@ -149,14 +149,14 @@ if (!isset($_SESSION['id']) || !$_SESSION['id']) {
                 } else {
                     echo "
                     <div class='text-center mt-4'>
-                        <a href='mi_perfil.php' class='btn btn-primary btn-lg px-4 py-2' style='border-radius: 50px; font-weight: bold;'>Volver a tu perfil</a>
+                        <a href='soporte.php' class='btn btn-primary btn-lg px-4 py-2' style='border-radius: 50px; font-weight: bold;'>Volver a tu soporte</a>
                     </div>
                     ";
                 }
             }
 
 
-            echo "<div class='text-center mt-3'><a href='mi_perfil.php' class='btn btn-primary'>Volver a tu perfil</a></div>";
+            echo "<div class='text-center mt-3'><a href='soporte.php' class='btn btn-primary'>Volver a tu soporte</a></div>";
 
             mysqli_close($cnx);
         } else {
@@ -253,7 +253,7 @@ if (!isset($_SESSION['id']) || !$_SESSION['id']) {
                                     echo "<td style='color: black;'>" . date("d/m/Y", strtotime($ult_update)) . "</td>";
                                     echo "<td>
                                     <div class='d-flex justify-content-center gap-2'>
-                                        <a href='comentarios_tickets.php?id=$id' class='btn btn-success btn-sm'>Ver</a>  
+                                        <a href='../tickets/comentarios_tickets.php?id=$id' class='btn btn-success btn-sm'>Ver</a>  
                                         
                                     </div>
                                 </td>";    

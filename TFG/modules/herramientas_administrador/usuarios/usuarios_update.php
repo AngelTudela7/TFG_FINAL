@@ -1,7 +1,8 @@
 <?php 
 session_start();
-include ('includes/config.php');
-include('includes/permisos.php');
+include ('../../../includes/config.php');
+include('../../../includes/permisos.php');
+
  ?>
 
 
@@ -25,16 +26,16 @@ include('includes/permisos.php');
             <!-- Enlaces del menú -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-2 me-auto">
-                <li class="nav-item"><a class="nav-link" href="herramientas_admin.php">Listado</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Crear</a></li>
+                <li class="nav-item"><a class="nav-link" href="../noticias/herramientas_admin.php">Listado</a></li>
+                    <li class="nav-item"><a class="nav-link" href="usuarios_crear.php">Crear</a></li>
                 </ul>
             </div>
 
-            <!-- Sección de usuario -->
-            <div class="d-flex align-items-center gap-2 flex-wrap">
+           <!-- Sección de usuario -->
+           <div class="d-flex align-items-center gap-2 flex-wrap">
                 <span class="text-white fw-bold"> <?php echo $_SESSION['nombre']; ?> </span>
-                <img src="assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
-                <a href="logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
+                <img src="../../../assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
+                <a href="../../../autenticaciones/logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
             </div>
         </div>
     </nav>
@@ -43,18 +44,18 @@ include('includes/permisos.php');
     if (isset($_POST['Actualizar'])) {
     $cnx = conectar();
 
-    $consulta = "UPDATE noticias SET 
-    titulo = '" . $_POST['titulo'] . "',
-    contenido = '" . $_POST['contenido'] . "',
-    imagen = '" . $_POST['imagen'] . "',
-    prioridad = '" . $_POST['prioridad'] . "'
+    $consulta = "UPDATE usuarios SET 
+    nombre = '" . $_POST['nombre'] . "',
+    email = '" . $_POST['email'] . "',
+    password = '" . $_POST['contrasena'] . "',
+    rol_id = '" . $_POST['rol'] . "'
     WHERE id = '" . $_POST['id'] . "'";
     $resultado = mysqli_query($cnx, $consulta) or die(mysqli_error($cnx));
     echo "<div class='container mt-4 text-center'>";
     echo "<div class='alert alert-success' role='alert'>";
-    echo "<h4 class='fw-bold'><i class='bi bi-check-circle'></i> Registro editado con éxito</h4>";
+    echo "<h4 class='fw-bold'><i class='bi bi-check-circle'></i> Usuario editado con éxito</h4>";
     echo "</div>";
-    echo "<a href='herramientas_admin.php' class='btn btn-primary'><i class='bi bi-arrow-left'></i> Volver al listado</a>";
+    echo "<a href='administracion_users.php' class='btn btn-primary'><i class='bi bi-arrow-left'></i> Volver al listado</a>";
     echo "</div>";
     mysqli_close($cnx);
 
@@ -62,51 +63,51 @@ include('includes/permisos.php');
 
     $cnx = conectar();
 
-    $consulta = "SELECT * FROM Noticias WHERE id='".$_GET['id']."'";
+    $consulta = "SELECT * FROM usuarios WHERE id='".$_GET['id']."'";
     $resultado = mysqli_query($cnx,$consulta) or die(mysqli_error($cnx));
 
     if (mysqli_num_rows($resultado) > 0 ) {
     $fila = mysqli_fetch_array($resultado);	
    ?>
 
-   <<div class="container mt-5">
+   <div class="container mt-5">
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white text-center">
-            <h4>Editar Noticia</h4>
+            <h4>Editar usuario</h4>
         </div>
         <div class="card-body">
             <form name="formulario1" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
 
                 <div class="mb-3">
-                    <label class="form-label">Título</label>
-                    <input name="titulo" type="text" class="form-control" value="<?php echo $fila['titulo']; ?>">
+                    <label class="form-label">Nombre</label>
+                    <input name="nombre" type="text" class="form-control" value="<?php echo $fila['nombre']; ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Contenido</label>
-                    <textarea name="contenido" class="form-control" rows="4"><?php echo $fila['contenido']; ?></textarea>
+                    <label class="form-label">Email</label>
+                    <textarea name="email" class="form-control" rows="4"><?php echo $fila['email']; ?></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Imagen (URL)</label>
-                    <input name="imagen" type="text" class="form-control" value="<?php echo $fila['imagen']; ?>">
+                    <label class="form-label">Contraseña</label>
+                    <input name="contrasena" type="text" class="form-control" value="<?php echo $fila['password']; ?>">
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Prioridad</label>
-                    <select name="prioridad" class="form-select">
-                        <option value="Principal" <?php echo ($fila['prioridad'] == 'Principal') ? 'selected' : ''; ?>>Principal</option>
-                        <option value="Izquierda" <?php echo ($fila['prioridad'] == 'Izquierda') ? 'selected' : ''; ?>>Izquierda</option>
-                        <option value="Derecha" <?php echo ($fila['prioridad'] == 'Derecha') ? 'selected' : ''; ?>>Derecha</option>
+                    <label class="form-label">Rol</label>
+                    <select name="rol" class="form-select">
+                        <option value="1" <?php echo ($fila['rol_id'] == '1') ? 'selected' : ''; ?>>admin</option>
+                        <option value="2" <?php echo ($fila['rol_id'] == '2') ? 'selected' : ''; ?>>comun</option>
+                        
                     </select>
                 </div>
 
                 <div class="text-center">
                     <button type="submit" name="Actualizar" class="btn btn-success">
-                        <i class="bi bi-save"></i> Actualizar Noticia
+                        <i class="bi bi-save"></i> Actualizar Usuario
                     </button>
-                    <a href="herramientas_admin.php" class="btn btn-secondary">
+                    <a href="administracion_users.php" class="btn btn-secondary">
                         <i class="bi bi-arrow-left"></i> Volver al listado
                     </a>
                 </div>

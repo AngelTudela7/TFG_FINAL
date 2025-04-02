@@ -1,14 +1,14 @@
 
 <?php 
 session_start();
-include ('includes/config.php');
-include('includes/permisos.php');
+include ('../../../includes/config.php');
+include('../../../includes/permisos.php');
 ?>
 
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,8 +28,8 @@ include('includes/permisos.php');
             <!-- Enlaces del menú -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-2 me-auto">
-                <li class="nav-item"><a class="nav-link" href="herramientas_admin.php">Noticias</a></li>
-                <li class="nav-item"><a class="nav-link" href="administracion_users.php">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="../noticias/herramientas_admin.php">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link" href="../usuarios/administracion_users.php">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="listado_total_tickets.php">Listado Total Tickets</a></li>
 
                     
@@ -37,12 +37,13 @@ include('includes/permisos.php');
                 </ul>
             </div>
 
-            <!-- Sección de usuario -->
+            <!-- Seccion del usuario -->
             <div class="d-flex align-items-center gap-2 flex-wrap">
                 <span class="text-white fw-bold"> <?php echo $_SESSION['nombre']; ?> </span>
-                <img src="assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
-                <a href="logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
+                <img src="../../../assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
+                <a href="../../../autenticaciones/logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
             </div>
+        </div>
         </div>
     </nav>
 

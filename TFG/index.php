@@ -62,7 +62,7 @@ include('includes/database.php');
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">Fortune Football</a>
+        <a class="navbar-brand" href="index.php">Fortune Football</a>
         
         <!-- Botón del menú hamburguesa -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
@@ -74,17 +74,16 @@ include('includes/database.php');
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- Links de navegación -->
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Partidos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Noticias</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Equipos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Jugadores</a></li>
+                <li class="nav-item"><a class="nav-link" href="modules/competiciones/competiciones.php">Competiciones</a></li>
+                <li class="nav-item"><a class="nav-link" href="modules/equipos/equipos.php">Equipos</a></li>
+                <li class="nav-item"><a class="nav-link" href="modules/jugadores/jugadores.php">Jugadores</a></li>
             </ul>
 
             <!-- Sección de usuario -->
             <ul class="navbar-nav ms-3">
                 <?php if (!isset($_SESSION['id']) || !$_SESSION['id']) { ?>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="login_comun.php">Iniciar Sesión</a>
+                        <a class="btn btn-outline-light" href="autenticaciones/login_comun.php">Iniciar Sesión</a>
                     </li>
                 <?php } else { ?>
                     <li class="nav-item dropdown">
@@ -93,9 +92,9 @@ include('includes/database.php');
                             <?php echo htmlspecialchars($_SESSION['nombre']); ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="mi_perfil.php">Mi perfil</a></li>
-                            <li><a class="dropdown-item" href="soporte.php">Soporte</a></li>
-                            <li><a class="dropdown-item text-danger" href="logout_comun.php">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="modules/herramientas_administrador/usuarios/mi_perfil.php">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="modules/herramientas_administrador/usuarios/soporte.php">Soporte</a></li>
+                            <li><a class="dropdown-item text-danger" href="autenticaciones/logout_comun.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 <?php } ?>
@@ -120,7 +119,7 @@ include('includes/database.php');
             while ($row = mysqli_fetch_assoc($res)) {
               
               echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">';
-              echo '<a href="noticias_detalle.php?id=' . $row['id'] . '" class="text-decoration-none">';
+              echo '<a href="modules/noticias/noticias_detalle.php?id=' . $row['id'] . '" class="text-decoration-none">';
               echo '<div class="card h-100 bg-secondary text-white shadow-lg border-0">';
               echo '<img src="' . $row['imagen'] . '" class="card-img-top" alt="' . $row['titulo'] . '" />';
               echo '<div class="card-body">';
@@ -151,7 +150,7 @@ include('includes/database.php');
 
             while ($row = mysqli_fetch_assoc($res_izquierda)) {
              
-              echo '<a href="noticias_detalle.php?id=' . $row['id'] . '" class="text-decoration-none">';
+              echo '<a href="modules/noticias/noticias_detalle.php?id=' . $row['id'] . '" class="text-decoration-none">';
               echo '<div class="card bg-dark text-white mb-3">'; 
               echo '<img src="' . $row['imagen'] . '" class="card-img-top" alt="' . $row['titulo'] . '">';
               echo '<div class="card-body">';
@@ -172,7 +171,7 @@ include('includes/database.php');
 
             while ($row = mysqli_fetch_assoc($res_derecha)) {
              
-              echo '<a href="noticias_detalle.php?id=' . $row['id'] . '" class="text-decoration-none">';
+              echo '<a href="modules/noticias/noticias_detalle.php?id=' . $row['id'] . '" class="text-decoration-none">';
               echo '<div class="card bg-dark text-white mb-3">'; 
               echo '<img src="' . $row['imagen'] . '" class="card-img-top" alt="' . $row['titulo'] . '">';
               echo '<div class="card-body">';

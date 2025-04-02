@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include ('includes/config.php');
-include('includes/permisos.php');
+include ('../../../includes/config.php');
+include('../../../includes/permisos.php');
 ?>
 
 <!DOCTYPE html>
@@ -23,23 +23,23 @@ include('includes/permisos.php');
             $id = mysqli_real_escape_string($cnx, $_POST['id']);
 
             // Comprobar si la noticia existe antes de eliminarla
-            $consulta_existencia = "SELECT * FROM Noticias WHERE id = '$id'";
+            $consulta_existencia = "SELECT * FROM usuarios WHERE id = '$id'";
             $resultado_existencia = mysqli_query($cnx, $consulta_existencia);
 
             if (mysqli_num_rows($resultado_existencia) == 0) {
-                echo "<div class='alert alert-warning text-center'><strong>La noticia con ID $id no existe.</strong></div>";
+                echo "<div class='alert alert-warning text-center'><strong>El usuario con ID $id no existe.</strong></div>";
             } else {
                 // Si existe, eliminarla
-                $consulta_delete = "DELETE FROM Noticias WHERE id = '$id'";
+                $consulta_delete = "DELETE FROM usuarios WHERE id = '$id'";
                 $resultado_delete = mysqli_query($cnx, $consulta_delete);
 
                 if ($resultado_delete) {
                     echo "<div class='alert alert-success text-center'><strong>Registro eliminado con éxito.</strong></div>";
                 } else {
-                    echo "<div class='alert alert-danger text-center'><strong>Error al eliminar la noticia.</strong></div>";
+                    echo "<div class='alert alert-danger text-center'><strong>Error al eliminar al usuario.</strong></div>";
                 }
             }
-            echo "<div class='text-center'><a href='herramientas_admin.php' class='btn btn-primary'>Volver al listado</a></div>";
+            echo "<div class='text-center'><a href='administracion_users.php' class='btn btn-primary'>Volver al listado</a></div>";
         } else {
             if (empty($_GET['id'])) { 
         ?> 
@@ -51,7 +51,7 @@ include('includes/permisos.php');
                 </div>
                 <div class="text-center">
                     <button type="submit" name="Buscar" class="btn btn-primary">Buscar</button>
-                    <a href="herramientas_admin.php" class="btn btn-secondary">Cancelar</a>
+                    <a href="administracion_users.php" class="btn btn-secondary">Cancelar</a>
                 </div>
             </form>
         <?php
@@ -59,12 +59,12 @@ include('includes/permisos.php');
                 $id = mysqli_real_escape_string($cnx, $_GET['id']);
 
                 // Comprobar si la noticia existe
-                $consulta_existencia = "SELECT * FROM Noticias WHERE id = '$id'";
+                $consulta_existencia = "SELECT * FROM usuarios WHERE id = '$id'";
                 $resultado_existencia = mysqli_query($cnx, $consulta_existencia);
 
                 if (mysqli_num_rows($resultado_existencia) == 0) {
-                    echo "<div class='alert alert-warning text-center'><strong>La noticia con ID $id no existe.</strong></div>";
-                    echo "<div class='text-center'><a href='herramientas_admin.php' class='btn btn-primary'>Volver al listado</a></div>";
+                    echo "<div class='alert alert-warning text-center'><strong>El usuario con ID $id no existe.</strong></div>";
+                    echo "<div class='text-center'><a href='administracion_users.php' class='btn btn-primary'>Volver al listado</a></div>";
                 } else {
         ?>
             <div class="alert alert-warning text-center">
@@ -75,7 +75,7 @@ include('includes/permisos.php');
             <form name="formulario1" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="text-center">
                 <input name="id" type="hidden" value="<?php echo $id; ?>">
                 <button type="submit" name="Eliminar" class="btn btn-danger">Borrar Registro</button>
-                <a href="herramientas_admin.php" class="btn btn-secondary">Cancelar</a>
+                <a href="administracion_users.php" class="btn btn-secondary">Cancelar</a>
             </form>
         <?php  
                 }

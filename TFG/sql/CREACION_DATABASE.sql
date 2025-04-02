@@ -19,7 +19,7 @@ CREATE TABLE Noticias (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     contenido TEXT NOT NULL,
-    autor_id INT  NOT NULL,
+    autor_id INT ,
     fecha_publicacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     imagen VARCHAR(255) NOT NULL,
     prioridad VARCHAR (255) NOT NULL,
@@ -39,8 +39,8 @@ CREATE TABLE Tickets (
     desarrollador_id INT NULL,  -- Se asigna al desarrollador cuando se trabaja en el ticket
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES Usuarios(id),
-    FOREIGN KEY (desarrollador_id) REFERENCES Usuarios(id)
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (desarrollador_id) REFERENCES Usuarios(id) ON DELETE CASCADE
 );
 
 

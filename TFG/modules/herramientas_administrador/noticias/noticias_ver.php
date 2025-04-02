@@ -1,7 +1,7 @@
 <?php
 session_start();
-include ('includes/config.php');
-include('includes/permisos.php');
+include('../../../includes/config.php');
+include('../../../includes/permisos.php');
   ?>
 
 
@@ -15,7 +15,8 @@ include('includes/permisos.php');
 
   </head>
   <body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <!-- Botón para colapsar el menú en móviles -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,16 +26,19 @@ include('includes/permisos.php');
             <!-- Enlaces del menú -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-2 me-auto">
-                    <li class="nav-item"><a class="nav-link" href="herramientas_admin.php">Listado</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Crear</a></li>
+                    <li class="nav-item"><a class="nav-link" href="noticias_crear.php">Crear</a></li>
+                    <li class="nav-item"><a class="nav-link" href="noticias_eliminar.php">Eliminar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../usuarios/administracion_users.php">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../tickets/gestion_tickets.php">Gestión Tickets</a></li>
+
                 </ul>
             </div>
 
             <!-- Sección de usuario -->
             <div class="d-flex align-items-center gap-2 flex-wrap">
                 <span class="text-white fw-bold"> <?php echo $_SESSION['nombre']; ?> </span>
-                <img src="assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
-                <a href="logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
+                <img src="../../../assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
+                <a href="../../../autenticaciones/logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
             </div>
         </div>
     </nav>
@@ -65,6 +69,12 @@ if (mysqli_num_rows($resultado) > 0) {
                     <th class="bg-light">Contenido</th>
                     <td><?php echo nl2br(htmlspecialchars($fila['contenido'])); ?></td>
                 </tr>
+
+                <tr>
+                    <th class="bg-light">Descripcion Corta:</th>
+                    <td><?php echo nl2br(htmlspecialchars($fila['descripcion_corta'])); ?></td>
+                </tr>
+
                 <tr>
                     <th class="bg-light">Imagen</th>
                     <td>

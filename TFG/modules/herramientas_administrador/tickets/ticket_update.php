@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include ('includes/config.php');
-include('includes/permisos.php');
+include ('../../../includes/config.php');
+include('../../../includes/permisos.php');
  ?>
 
 
@@ -17,10 +17,10 @@ include('includes/permisos.php');
         
     $(document).ready(function() {
     $('#comment-form').on('submit', function(event) {
-        event.preventDefault(); // Prevenir el envío tradicional del formulario (sin recarga)
+        event.preventDefault(); // Prevenir la recarga del formulario
 
         var comentario = $('textarea[name="comentario"]').val();
-        var ticket_id = <?php echo $_GET['id']; ?>; // Obtener el ID del ticket desde la URL
+        var ticket_id = <?php echo $_GET['id']; ?>; 
 
         // Depuración
         console.log("Comentario:", comentario);
@@ -28,11 +28,11 @@ include('includes/permisos.php');
 
         if (!comentario.trim()) {
             alert("Por favor, escribe un comentario.");
-            return; // Si el comentario está vacío, no enviar la solicitud
+            return; // Si el comentario está vacío, no enviar la peticion
         }
 
         $.ajax({
-            url: 'agregar_comentario.php',  // Enviar la solicitud AJAX al archivo PHP
+            url: 'agregar_comentario.php',  // Enviar la peticion AJAX al archivo PHP
             method: 'POST',
             data: {
                 comentario: comentario,
@@ -43,16 +43,16 @@ include('includes/permisos.php');
                 console.log("Respuesta del servidor:", response);
 
                 if (response.startsWith("Error")) {
-                    alert(response); // Si la respuesta contiene "Error", mostrar el mensaje
+                    alert(response); // Si la respuesta es un error, mostrarlo
                 } else {
                     // Mostrar el comentario recién agregado
                     $('#comments-section').append(response);
-                    $('textarea[name="comentario"]').val(''); // Limpiar el campo de comentario
+                    $('textarea[name="comentario"]').val(''); 
                 }
             },
             error: function(xhr, status, error) {
                 console.error("Error AJAX:", error);
-                console.log("Detalles del error:", xhr.responseText);  // Mostrar detalles de la respuesta de error
+                console.log("Detalles del error:", xhr.responseText); 
                 alert("Error al agregar el comentario. Intenta nuevamente.");
             }
         });
@@ -65,7 +65,8 @@ include('includes/permisos.php');
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
+      
+<div class="container-fluid">
             <!-- Botón para colapsar el menú en móviles -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -79,11 +80,11 @@ include('includes/permisos.php');
                 </ul>
             </div>
 
-            <!-- Sección de usuario -->
-            <div class="d-flex align-items-center gap-2 flex-wrap">
+             <!-- Sección de usuario -->
+             <div class="d-flex align-items-center gap-2 flex-wrap">
                 <span class="text-white fw-bold"> <?php echo $_SESSION['nombre']; ?> </span>
-                <img src="assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
-                <a href="logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
+                <img src="../../../assets/images/icono.png" alt="Usuario" class="rounded-circle" style="width: 30px; height: 30px;">
+                <a href="../../../autenticaciones/logout.php" class="btn btn-danger btn-sm">Cerrar sesión</a>
             </div>
         </div>
     </nav>

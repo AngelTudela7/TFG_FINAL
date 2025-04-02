@@ -1,7 +1,8 @@
 <!-- Incluir archivos e iniciar la sesión-->
 <?php
-include('includes/config.php');
-include('includes/database.php');
+include('../../includes/config.php');
+include('../../includes/database.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ include('includes/database.php');
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         
-        <a class="navbar-brand" href="#">Fortune Football</a>
+        <a class="navbar-brand" href="../../index.php">Fortune Football</a>
         
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
@@ -40,7 +41,6 @@ include('includes/database.php');
         <div class="collapse navbar-collapse" id="navbarNav">
             
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="../../modules/partidos/partidos.php">Partidos</a></li>
                 <li class="nav-item"><a class="nav-link" href="../../index.php">Noticias</a></li>
                 <li class="nav-item"><a class="nav-link" href="../../modules/equipos/equipos.php">Equipos</a></li>
                 <li class="nav-item"><a class="nav-link" href="../../modules/jugadores/jugadores.php">Jugadores</a></li>
@@ -50,18 +50,18 @@ include('includes/database.php');
             <ul class="navbar-nav ms-3">
                 <?php if (!isset($_SESSION['id']) || !$_SESSION['id']) { ?>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="login_comun.php">Iniciar Sesión</a>
+                        <a class="btn btn-outline-light" href="../../autenticaciones/login_comun.php">Iniciar Sesión</a>
                     </li>
                 <?php } else { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                            <img src="assets/images/icono.png" alt="Usuario" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                            <img src="../../assets/images/icono.png" alt="Usuario" class="rounded-circle me-2" style="width: 30px; height: 30px;">
                             <?php echo htmlspecialchars($_SESSION['nombre']); ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="mi_perfil.php">Mi perfil</a></li>
-                            <li><a class="dropdown-item" href="soporte.php">Soporte</a></li>
-                            <li><a class="dropdown-item text-danger" href="logout_comun.php">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="../herramientas_administrador/usuarios/mi_perfil.php">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="../herramientas_administrador/usuarios/soporte.php">Soporte</a></li>
+                            <li><a class="dropdown-item text-danger" href="../../autenticaciones/logout_comun.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 <?php } ?>
